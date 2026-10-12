@@ -465,7 +465,7 @@ $("hCreate").addEventListener("click", async () => {
     const id = await B.createOrder({ title, hostUid: B.uid, hostName: name, status: "open", checked: {}, paid: {} });
     rememberOrder(id, "host");
     location.hash = "#/o/" + id;
-    setTimeout(shareLink, 400);
+    setTimeout(() => toast("الطلب اتفتح ✔ اضغط مشاركة وابعت اللينك للجروب"), 600);
   } catch (e) { $("hErr").textContent = "حصلت مشكلة في الإنشاء. اتأكد من الإنترنت وجرب تاني."; console.error(e); }
   btn.disabled = false; btn.textContent = "افتح طلب جديد";
 });
@@ -773,10 +773,16 @@ $("billWa").addEventListener("click", () => {
 const link = () => location.origin + location.pathname + "#/o/" + OID;
 async function shareLink(){
   const text = `🌯 ${O ? O.title : "طلب بيت الشاورما"}\nضيف طلبك من هنا:`;
-  if (navigator.share) { try { await navigator.share({ title: "طلب جماعي", text, url: link() }); return; } catch (e) { if (e && e.name === "AbortError") return; } }
+  if (navigator.share && /Android|iPhone|iPad|Mobile/i.test(navigator.userAgent)) { try { await navigator.share({ title: "طلب جماعي", text, url: link() }); return; } catch (e) { if (e && e.name === "AbortError") return; } }
   copy();
 }
-async function copy(){ try { await navigator.clipboard.writeText(link()); toast("اتنسخ اللينك ✔"); } catch { prompt("انسخ اللينك:", link()); } }
+async function copy(){
+  try { await navigator.clipboard.writeText(link()); toast("اتنسخ اللينك ✔"); return; } catch {}
+  const t = document.createElement("textarea"); t.value = link(); t.setAttribute("readonly", ""); t.style.position = "fixed"; t.style.opacity = "0";
+  document.body.appendChild(t); t.select();
+  let ok = false; try { ok = document.execCommand("copy"); } catch {}
+  t.remove(); toast(ok ? "اتنسخ اللينك ✔" : link());
+}
 $("oShare").addEventListener("click", shareLink);
 $("copyLink").addEventListener("click", copy);
 $("shareWa").addEventListener("click", () => window.open("https://wa.me/?text=" + encodeURIComponent(`🌯 ${O.title}\nضيف طلبك من هنا: ${link()}`), "_blank", "noopener"));
