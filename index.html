@@ -149,10 +149,16 @@ main{padding-bottom:110px}
 .check.done .box{background:var(--green);border-color:var(--green)}
 .check.done .cn b{text-decoration:line-through;text-decoration-color:rgba(31,138,76,.5)}
 .check .cn{flex:1;min-width:0}
-.check .qty{font-weight:900;font-size:1.25rem;color:var(--red);min-width:34px;text-align:center}
+.check .qty{font-weight:900;font-size:1.3rem;line-height:1.2;color:#fff;background:var(--red);border-radius:10px;min-width:44px;padding:4px 8px;text-align:center;flex:none;direction:ltr}
+.check.done .qty{background:var(--green)}
 .check .who{color:var(--muted);font-size:.8rem;margin-top:3px}
 .progress{height:8px;background:#EDE4DC;border-radius:999px;overflow:hidden;margin:8px 0 4px}
 .progress i{display:block;height:100%;background:var(--green);border-radius:999px;transition:width .25s}
+.fill{margin-top:14px;border-color:#F3C9CF;background:#FFF8F8}
+.fill-t{display:block;font-size:1.05rem;font-weight:900;margin-bottom:4px}
+.fill-steps{margin:6px 0 10px;padding-inline-start:20px;font-size:.92rem;line-height:1.7}
+.fill-row{display:flex;gap:8px;margin-top:8px}
+.fill-row .btn{flex:1;padding:11px 8px;font-size:.9rem}
 .bill{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:8px}
 .bill li{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
 .bill .bn{flex:1;min-width:0;font-weight:800}
@@ -270,6 +276,29 @@ dialog::backdrop{background:rgba(20,14,10,.5)}
     <div id="t-prep" hidden>
       <div id="prepGuest" class="note-bar" hidden>القايمة دي لصاحب الطلب. هو اللي هيضيف الأصناف على موقع بيت الشاورما.</div>
       <div class="hostbar" id="hostBar"></div>
+      <div id="fillBox" hidden>
+        <div class="fill card">
+          <b class="fill-t">املأ سلة بيت الشاورما في ثانية</b>
+          <ol class="fill-steps">
+            <li>اضغط الزرار ده، هيفتح موقعهم.</li>
+            <li>هناك، افتح المفضلة واختار اختصار <b>«املأ السلة»</b>.</li>
+            <li>هتلاقي الطلب كله في السلة. راجعه وادفع.</li>
+          </ol>
+          <a class="btn primary" id="fillGo" target="_blank" rel="noopener">افتح بيت الشاورما بالطلب</a>
+          <div class="fill-row"><button class="btn ghost" type="button" id="fillCopy">نسخ كود الطلب</button><button class="btn ghost" type="button" id="fillHow">إعداد الاختصار (مرة واحدة)</button></div>
+          <div id="fillSetup" hidden>
+            <p class="small" style="margin:12px 0 6px"><b>على الآيفون (Safari):</b></p>
+            <ol class="fill-steps">
+              <li>اضغط <b>نسخ الاختصار</b> تحت.</li>
+              <li>في Safari اضغط زرار المشاركة <b>⬆︎</b> ← <b>Add Bookmark</b> ← سمّيه <b>املأ السلة</b> ← <b>Save</b>.</li>
+              <li>افتح المفضلة <b>📖</b> ← <b>Edit</b> ← اضغط على «املأ السلة» ← امسح العنوان اللي في الخانة التانية والصق الاختصار ← <b>Done</b>.</li>
+            </ol>
+            <p class="small" style="margin:10px 0 6px"><b>على الكمبيوتر (Chrome):</b> كليك يمين على شريط المفضلة ← Add page ← الاسم «املأ السلة» والـ URL الصق الاختصار.</p>
+            <button class="btn dark" type="button" id="bmCopy" style="width:100%">نسخ الاختصار</button>
+            <p class="muted small" style="margin:8px 0 0">لو موقع بيت الشاورما اتغير والاختصار مشتغلش، كمّل بالقايمة اللي تحت عادي.</p>
+          </div>
+        </div>
+      </div>
       <div id="prepHead"></div>
       <div id="prepList"></div>
     </div>
@@ -568,7 +597,15 @@ $("menuList").addEventListener("click", e => {
 
 /* ---------------- item sheet ---------------- */
 let cur = null; // { it, cat, sel: {gid: Set(mid)}, qty, editLine }
-function groupsOf(it){ return it.g.map(id => ({ id, ...MENU.groups[id] })).filter(g => g.m && g.m.length); }
+// Some add-on groups in the restaurant's data say "required" but their own site doesn't enforce it
+// (e.g. grill add-ons with "بدون بصل"). A group of extras/exclusions is always optional here.
+const EXTRA_RX = /^(بدون|اجعل|غير|زياد|اكسترا|إضافة|اضافة)/;
+function effMin(g){
+  if (g.t === "o") return 0; // extras/options are never required, like the restaurant site
+  return Math.min(g.min || 0, g.m.length, g.max || 1);
+}
+function gName(g){ return /^[\x00-\x7F]+$/.test(g.n || "") ? (g.t === "s" ? "الحجم" : "الإضافات") : g.n; }
+function groupsOf(it){ return it.g.map(id => ({ id, ...MENU.groups[id] })).filter(g => g.m && g.m.length).map(g => ({ ...g, min: effMin(g) })); }
 function openItem(it, catId, line){
   cur = { it, cat: catId || it.cat, sel: {}, qty: line ? line.qty : 1, line };
   const gs = groupsOf(it);
@@ -591,7 +628,7 @@ function renderGroups(){
     const single = g.max === 1;
     const need = g.min >= 1;
     const label = need ? (g.min === g.max ? "مطلوب" : `مطلوب ${g.min}`) : (single ? "اختياري" : `اختياري · لحد ${g.max}`);
-    return `<div class="grp" data-g="${g.id}"><div class="grp-h"><b>${esc(g.n === "Arabic" ? "الحجم" : g.n)}</b><span class="req${need ? "" : " opt"}" data-req="${g.id}">${label}</span></div>${g.m.map(m => {
+    return `<div class="grp" data-g="${g.id}"><div class="grp-h"><b>${esc(gName(g))}</b><span class="req${need ? "" : " opt"}" data-req="${g.id}">${label}</span></div>${g.m.map(m => {
       const md = MENU.mods[m]; if (!md) return "";
       const on = cur.sel[g.id].has(m);
       const pr = g.t === "s" ? num(md[1]) + " " + CUR : (md[1] > 0 ? "+" + num(md[1]) + " " + CUR : "");
@@ -603,7 +640,7 @@ function renderGroups(){
 }
 $("iGroups").addEventListener("click", e => {
   const b = e.target.closest("[data-m]"); if (!b) return;
-  const g = MENU.groups[b.dataset.g], s = cur.sel[b.dataset.g], m = +b.dataset.m;
+  const g0 = MENU.groups[b.dataset.g], g = { ...g0, min: effMin(g0) }, s = cur.sel[b.dataset.g], m = +b.dataset.m;
   if (g.max === 1) { if (s.has(m) && g.min < 1) s.clear(); else { s.clear(); s.add(m); } }
   else if (s.has(m)) s.delete(m);
   else { if (s.size >= g.max) { toast(`أقصى عدد ${g.max}`); return; } s.add(m); }
@@ -624,14 +661,14 @@ function unitPrice(){
 }
 $("iAdd").addEventListener("click", async () => {
   for (const g of groupsOf(cur.it)) if (cur.sel[g.id].size < g.min) {
-    $("iErr").textContent = "اختار " + (g.n === "Arabic" ? "الحجم" : g.n);
+    $("iErr").textContent = "اختار " + gName(g);
     const r = $("iGroups").querySelector(`[data-req="${g.id}"]`); r.classList.add("err"); r.scrollIntoView({ behavior: "smooth", block: "center" });
     return;
   }
   let name = myName();
   if (!name) { $("itemDlg").close(); name = await askName(); if (!name) return; $("itemDlg").showModal(); }
   const opts = [];
-  for (const g of groupsOf(cur.it)) for (const m of g.m) if (cur.sel[g.id].has(m)) opts.push({ g: g.id, gn: g.n === "Arabic" ? "الحجم" : g.n, t: g.t, m, mn: MENU.mods[m][0], p: MENU.mods[m][1] });
+  for (const g of groupsOf(cur.it)) for (const m of g.m) if (cur.sel[g.id].has(m)) opts.push({ g: g.id, gn: gName(g), t: g.t, m, mn: MENU.mods[m][0], p: MENU.mods[m][1] });
   const cat = CATS[cur.cat] || CATS[cur.it.cat];
   const line = { uid: B.uid, who: name, item: cur.it.id, name: cur.it.n, cat: cat.id, catName: cat.n, opts, note: $("iNote").value.trim(), unit: unitPrice(), qty: cur.qty };
   const btn = $("iAdd"); btn.disabled = true;
@@ -715,6 +752,8 @@ function prepGroups(){
   }));
   return cats;
 }
+const BOOKMARKLET = "javascript:(async()%3D%3E%7Btry%7Bvar%20N%3Dwindow.%24nuxt%2CS%3DN%26%26N.%24store%3Bif(!S%7C%7C!S.state%7C%7C!S.state.concept)%7Balert(%22%D8%A7%D9%81%D8%AA%D8%AD%20%D9%85%D9%88%D9%82%D8%B9%20%D8%A8%D9%8A%D8%AA%20%D8%A7%D9%84%D8%B4%D8%A7%D9%88%D8%B1%D9%85%D8%A7%20%D8%A7%D9%84%D8%A3%D9%88%D9%84%D8%8C%20%D9%88%D8%A8%D8%B9%D8%AF%D9%8A%D9%86%20%D8%AF%D9%88%D8%B3%20%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D8%B5%D8%A7%D8%B1%22)%3Breturn%7Dvar%20st%3DS.state%2Craw%3D(location.hash.match(%2Fgx%3D(%5B%5E%26%5D%2B)%2F)%7C%7C%5B%5D)%5B1%5D%2Cdata%3Dnull%3Btry%7Bdata%3DJSON.parse(decodeURIComponent(raw%7C%7C%22%22))%7Dcatch(e)%7B%7Dif(!data)%7Bvar%20t%3Dprompt(%22%D8%A7%D9%84%D8%B5%D9%82%20%D9%83%D9%88%D8%AF%20%D8%A7%D9%84%D8%B7%D9%84%D8%A8%20%D8%A7%D9%84%D8%AC%D9%85%D8%A7%D8%B9%D9%8A%20%D9%87%D9%86%D8%A7%3A%22)%3Bif(!t)return%3Btry%7Bdata%3DJSON.parse(t.trim())%7Dcatch(e)%7Balert(%22%D8%A7%D9%84%D9%83%D9%88%D8%AF%20%D8%AF%D9%87%20%D9%85%D8%B4%20%D8%B5%D8%AD%D9%8A%D8%AD%22)%3Breturn%7D%7Dif(!st.concept.categoryItems%7C%7C!st.concept.categoryItems.length)%7Balert(%22%D8%A7%D9%84%D9%85%D9%86%D9%8A%D9%88%20%D9%84%D8%B3%D9%87%20%D8%A8%D9%8A%D8%AD%D9%85%D9%91%D9%84%D8%8C%20%D8%A7%D8%B3%D8%AA%D9%86%D9%89%20%D8%AB%D8%A7%D9%86%D9%8A%D8%A9%20%D9%88%D8%AC%D8%B1%D8%A8%20%D8%AA%D8%A7%D9%86%D9%8A%22)%3Breturn%7Dvar%20G%3D%7B%7D%2CM%3D%7B%7D%2CI%3D%7B%7D%3Bst.concept.modifierGroups.forEach(function(g)%7BG%5Bg.id%5D%3Dg.attributes%7D)%3Bst.concept.modifiers.forEach(function(m)%7BM%5Bm.id%5D%3Dm.attributes%7D)%3Bst.concept.categoryItems.forEach(function(c)%7Bc.attributes.items.forEach(function(i)%7BI%5Bi.id%5D%3Di%7D)%7D)%3Bif(st.cart.items.length%26%26!confirm(%22%D8%A7%D9%84%D8%B3%D9%84%D8%A9%20%D9%81%D9%8A%D9%87%D8%A7%20%D8%A3%D8%B5%D9%86%D8%A7%D9%81%20%D8%AF%D9%84%D9%88%D9%82%D8%AA%D9%8A.%20%D8%A3%D9%85%D8%B3%D8%AD%D9%87%D8%A7%20%D9%88%D8%A3%D8%AD%D8%B7%20%D8%A7%D9%84%D8%B7%D9%84%D8%A8%20%D8%A7%D9%84%D8%AC%D9%85%D8%A7%D8%B9%D9%8A%D8%9F%22))return%3BS.commit(%22cart%2FEMPTY_CART%22)%3Bvar%20ok%3D0%2Cpcs%3D0%2Cskip%3D%5B%5D%3Bdata.forEach(function(r)%7B%20var%20id%3Dr%5B0%5D%2Cmods%3Dr%5B1%5D%7C%7C%5B%5D%2Cq%3Dr%5B2%5D%7C%7C1%2Cnote%3Dr%5B3%5D%7C%7Cnull%2Cname%3Dr%5B4%5D%7C%7CString(id)%2Cit%3DI%5Bid%5D%3B%20if(!it%7C%7C!it.enabled)%7Bskip.push(name)%3Breturn%7D%20var%20igs%3D(it%5B%22modifier-groups%22%5D%7C%7C%5B%5D).map(function(g)%7Bvar%20o%3Dtypeof%20g%3D%3D%22object%22%3Fg%3A%7Bid%3Ag%7D%2Cgg%3DG%5Bo.id%5D%7C%7C%7B%7D%2Cown%3Do.modifiers%26%26o.modifiers.length%3Breturn%7Bid%3Ao.id%2Cg%3Agg%2Cmin%3Ao.min!%3Dnull%3Fo.min%3Agg.minimum%2Cmax%3Ao.max!%3Dnull%3Fo.max%3Agg.maximum%2Cids%3A(own%3Fo.modifiers%3Agg.modifiers%7C%7C%5B%5D).map(function(x)%7Breturn%20typeof%20x%3D%3D%22object%22%3Fx.id%3Ax%7D)%7D%7D)%3B%20var%20base%3Dit.price%2Cadd%3D0%2Cout%3D%5B%5D%2Cbad%3Dfalse%2Cidx%3D0%3B%20mods.forEach(function(mid)%7B%20%20var%20m%3DM%5Bmid%5D%2Cig%3Digs.find(function(x)%7Breturn%20x.ids.indexOf(mid)%3E-1%7D)%3B%20%20if(!m%7C%7C!ig)%7Bbad%3Dtrue%3Breturn%7D%20%20var%20g%3Dig.g%2Cgid%3Dig.id%3Bidx%2B%2B%3B%20%20if(g.type%3D%3D%22sizes%22)%7Bbase%3Dm.price%3Bout.push(%7Bid%3Amid%2Cname%3Am.name%2Cprice%3Am.price%2Cnotes%3A%22%22%2Cquantity%3A1%2CisSize%3Atrue%2Cprices%3A%5B%5D%7D)%7D%20%20else%7Badd%2B%3Dm.price%3Bout.push(%7Bid%3Amid%2Cname%3Am.name%2Cprice%3Am.price%2Cnotes%3A%22%22%2Cquantity%3A1%2Cmodifiers%3A%5B%5D%2CisSize%3Afalse%2Cmaximum%3Aig.max%2Cminimum%3Aig.min%2Cmodifier_group_id%3Agid%2C%22free-modifiers-count%22%3A0%2Cprices%3A%5B%5D%2CoriginalPrice%3Am.price%2Cindex%3Aidx%7D)%7D%20%7D)%3B%20if(bad)%7Bskip.push(name)%3Breturn%7D%20S.commit(%22cart%2FADD_ITEM%22%2C%7Bid%3Ait.id%2Cprice%3Ait.price%2Cdescription%3Ait.description%2Cquantity%3Aq%2Cnotes%3Anote%2Cname%3Ait.name%2CimgUrl%3Ait%5B%22image-uri%22%5D%2Cdiscount%3A0%2C%22combo-items%22%3A%5B%5D%2C%22excluded-locations%22%3Ait%5B%22excluded-locations%22%5D%7C%7C%5B%5D%2C%22out-of-stock-locations%22%3Ait%5B%22out-of-stock-locations%22%5D%7C%7C%5B%5D%2Cmodifiers%3Aout%2Cingredients%3A%5B%5D%2Ctotal%3Abase%2Badd%2Cprices%3A%5B%5D%7D)%3B%20ok%2B%2B%3Bpcs%2B%3Dq%3B%7D)%3BlocalStorage.setItem(%22items%22%2CJSON.stringify(st.cart.items))%3Bhistory.replaceState(null%2C%22%22%2Clocation.pathname)%3Balert(%22%D8%A7%D8%AA%D8%B6%D8%A7%D9%81%20%22%2Bpcs%2B%22%20%D8%B5%D9%86%D9%81%20%D9%84%D9%84%D8%B3%D9%84%D8%A9%20%E2%9C%94%22%2B(skip.length%3F%22%5Cn%5Cn%D8%AF%D9%88%D9%84%20%D9%85%D8%B4%20%D9%84%D8%A7%D9%82%D9%8A%D9%87%D9%85%20%D8%A8%D9%86%D9%81%D8%B3%20%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D9%8A%D8%A7%D8%B1%D8%A7%D8%AA%D8%8C%20%D8%B6%D9%8A%D9%81%D9%87%D9%85%20%D8%A8%D8%A5%D9%8A%D8%AF%D9%83%3A%5Cn-%20%22%2Bskip.join(%22%5Cn-%20%22)%3A%22%22))%3Bvar%20cb%3D%5B%5D.slice.call(document.querySelectorAll(%22button%2Ca%22)).find(function(b)%7Breturn%20%2F%D8%B9%D8%B1%D8%B6%20%D8%A7%D9%84%D8%B7%D9%84%D8%A8%D8%A7%D8%AA%7CView%2Fi.test(b.innerText%7C%7C%22%22)%7D)%3Bif(cb)cb.click()%3B%7Dcatch(e)%7Balert(%22%D8%AD%D8%B5%D9%84%D8%AA%20%D9%85%D8%B4%D9%83%D9%84%D8%A9%3A%20%22%2Be.message)%7D%7D)()%3B";
+function cartCode(){ return JSON.stringify(prepGroups().flatMap(c => c.rows).map(r => [r.l.item, r.l.opts.map(o => o.m), r.qty, r.l.note || null, r.l.name])); }
 function renderPrep(){
   const host = isHost();
   $("prepGuest").hidden = host;
@@ -726,14 +765,26 @@ function renderPrep(){
   ) : "";
   const cats = prepGroups();
   const allRows = cats.flatMap(c => c.rows);
+  $("fillBox").hidden = !(host && allRows.length);
+  if (host && allRows.length) $("fillGo").href = src + "/-" + cats[0].id + "#gx=" + encodeURIComponent(cartCode());
   const doneN = allRows.filter(r => O.checked && O.checked[r.k]).length;
   const pieces = allRows.reduce((s, r) => s + r.qty, 0);
   $("prepHead").innerHTML = allRows.length ? `<div style="margin-top:16px;display:flex;justify-content:space-between;font-weight:800"><span>${host ? "ضيف على موقعهم وعلّم ✔" : "قايمة الطلب المجمعة"}</span><span>${doneN}/${allRows.length}</span></div><div class="progress"><i style="width:${allRows.length ? doneN / allRows.length * 100 : 0}%"></i></div><div class="muted small">${pieces} صنف في ${allRows.length} سطر${O.status === "open" && host ? " · اقفل الطلب الأول عشان محدش يزود وإنت بتطلب" : ""}</div>` : "";
   $("prepList").innerHTML = allRows.length ? cats.map(c => `<div class="prep-cat"><div class="pch"><b>${esc(c.n)}</b><a href="${esc(src)}/-${c.id}" target="_blank" rel="noopener">افتح القسم ↗</a></div>${c.rows.map(r => {
     const done = O.checked && O.checked[r.k];
-    return `<button type="button" class="check${done ? " done" : ""}" data-chk="${esc(r.k)}" ${host ? "" : "disabled"}><span class="box">${done ? "✓" : ""}</span><span class="cn"><b>${esc(r.l.name)}</b>${r.l.opts.length ? `<div class="opts muted small">${esc(r.l.opts.map(o => o.mn).join(" · "))}</div>` : ""}${r.l.note ? `<div class="lnote small" style="color:#8A5A00">✎ ${esc(r.l.note)}</div>` : ""}<div class="who">${esc(r.who.length === 1 ? r.who[0].n : r.who.map(w => w.n + (w.q > 1 ? " ×" + w.q : "")).join("، "))}</div></span><span class="qty">×${r.qty}</span></button>`;
+    return `<button type="button" class="check${done ? " done" : ""}" data-chk="${esc(r.k)}" ${host ? "" : "disabled"}><span class="qty">${r.qty}×</span><span class="cn"><b>${esc(r.l.name)}</b>${r.l.opts.length ? `<div class="opts muted small">${esc(r.l.opts.map(o => o.mn).join(" · "))}</div>` : ""}${r.l.note ? `<div class="lnote small" style="color:#8A5A00">✎ ${esc(r.l.note)}</div>` : ""}<div class="who">${esc(r.who.length === 1 ? r.who[0].n : r.who.map(w => w.n + (w.q > 1 ? " ×" + w.q : "")).join("، "))}</div></span><span class="box">${done ? "✓" : ""}</span></button>`;
   }).join("")}</div>`).join("") : '<div class="empty">لسه مفيش أصناف.</div>';
 }
+async function copyText(t, ok){
+  try { await navigator.clipboard.writeText(t); toast(ok); return; } catch {}
+  const x = document.createElement("textarea"); x.value = t; x.setAttribute("readonly", ""); x.style.position = "fixed"; x.style.opacity = "0";
+  document.body.appendChild(x); x.select(); x.setSelectionRange(0, t.length);
+  let done = false; try { done = document.execCommand("copy"); } catch {}
+  x.remove(); toast(done ? ok : "مقدرتش أنسخ، جرب تاني");
+}
+$("fillCopy").addEventListener("click", () => copyText(cartCode(), "اتنسخ كود الطلب ✔ الصقه لما الاختصار يطلبه"));
+$("fillHow").addEventListener("click", () => { $("fillSetup").hidden = !$("fillSetup").hidden; });
+$("bmCopy").addEventListener("click", () => copyText(BOOKMARKLET, "اتنسخ الاختصار ✔"));
 $("hostBar").addEventListener("click", async e => {
   const b = e.target.closest("[data-host]"); if (!b) return;
   const a = b.dataset.host;
