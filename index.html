@@ -23,93 +23,54 @@
 }
 *,*::before,*::after{box-sizing:inherit}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.5;
-  padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.5;padding-bottom:env(safe-area-inset-bottom,0px)}
 button,input,textarea{font:inherit;color:inherit}
 button{cursor:pointer}
-img{display:block;max-width:100%}
 [hidden]{display:none!important}
 :focus-visible{outline:3px solid var(--saffron);outline-offset:2px;border-radius:8px}
 .wrap{max-width:720px;margin:0 auto;padding:0 16px}
 
-/* ---------- top bar ---------- */
-.top{background:var(--red);color:#fff;padding:calc(10px + env(safe-area-inset-top,0px)) 0 0;position:sticky;top:0;z-index:20;
-  box-shadow:0 2px 0 rgba(0,0,0,.06)}
+.top{background:var(--red);color:#fff;padding:calc(10px + env(safe-area-inset-top,0px)) 0 0;position:sticky;top:0;z-index:20;box-shadow:0 2px 0 rgba(0,0,0,.06)}
 .top .row{display:flex;align-items:center;gap:10px;min-height:44px}
 .brand{display:flex;align-items:center;gap:8px;font-weight:900;font-size:1.05rem;text-decoration:none;color:#fff;white-space:nowrap}
-.brand b{background:#fff;color:var(--red);border-radius:8px;padding:0 7px;font-size:.85rem;line-height:1.6}
-.top .title{flex:1;min-width:0;font-weight:700;font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:.92}
-.pill{display:inline-flex;align-items:center;gap:6px;border:1.5px solid rgba(255,255,255,.55);background:transparent;color:#fff;border-radius:999px;padding:5px 12px;font-weight:700;font-size:.85rem;white-space:nowrap}
-.status{font-size:.75rem;font-weight:800;border-radius:999px;padding:2px 9px;background:#fff;color:var(--red)}
+.top .title{flex:1;min-width:0;font-weight:700;font-size:.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:.9}
+.pill{display:inline-flex;align-items:center;gap:6px;border:1.5px solid rgba(255,255,255,.55);background:transparent;color:#fff;border-radius:999px;padding:5px 12px;font-weight:700;font-size:.85rem;white-space:nowrap;text-decoration:none}
+.status{font-size:.75rem;font-weight:800;border-radius:999px;padding:2px 9px;background:#fff;color:var(--red);white-space:nowrap}
 .status.locked{background:var(--saffron);color:var(--coal)}
 .tabs{display:flex;gap:4px;margin-top:8px}
 .tabs button{flex:1;border:0;background:transparent;color:rgba(255,255,255,.75);font-weight:800;font-size:.95rem;padding:10px 4px 11px;border-bottom:3px solid transparent}
 .tabs button.on{color:#fff;border-bottom-color:#fff}
 .tabs .n{display:inline-block;min-width:20px;padding:0 6px;margin-inline-start:4px;border-radius:999px;background:rgba(255,255,255,.22);font-size:.78rem}
+main{padding-bottom:40px}
 
-/* ---------- home ---------- */
-.hero{background:var(--red);color:#fff;padding:26px 0 70px;position:relative;overflow:hidden}
-.hero::after{content:"";position:absolute;inset-inline:0;bottom:-1px;height:42px;background:var(--bg);border-radius:50% 50% 0 0 / 100% 100% 0 0}
-.hero h1{font-size:clamp(1.9rem,8vw,2.6rem);line-height:1.15;margin:8px 0 6px;font-weight:900}
-.hero p{margin:0;opacity:.9;max-width:34ch}
-.steps{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
-.steps span{background:rgba(255,255,255,.14);border-radius:999px;padding:4px 11px;font-size:.85rem;font-weight:700}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px}
-.home-card{margin-top:-46px;position:relative;z-index:2}
-label.f{display:block;font-weight:800;font-size:.9rem;margin:12px 0 5px}
-input.t,textarea.t{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:12px 13px;background:#fff;font-size:1rem}
-input.t:focus,textarea.t:focus{outline:none;border-color:var(--red)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:12px;padding:13px 18px;font-weight:800;font-size:1rem;text-decoration:none}
-.btn.primary{background:var(--red);color:#fff;width:100%;margin-top:14px}
+label.f{display:block;font-weight:800;font-size:.9rem;margin:14px 0 5px}
+input.t{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:12px 13px;background:#fff;font-size:1rem}
+input.t:focus{outline:none;border-color:var(--red)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:12px;padding:13px 18px;font-weight:800;font-size:1rem;text-decoration:none;text-align:center}
+.btn.primary{background:var(--red);color:#fff;width:100%}
 .btn.primary:active{background:var(--red-dark)}
 .btn.ghost{background:var(--red-soft);color:var(--red)}
 .btn.dark{background:var(--coal);color:#fff}
 .btn.green{background:var(--green);color:#fff}
+.btn.line{background:#fff;border:1.5px solid var(--line);color:var(--ink)}
+.btn.w{width:100%}
 .btn[disabled]{opacity:.5;cursor:default}
-h2.sec{font-size:1.05rem;margin:26px 2px 10px;font-weight:900}
-.olist{list-style:none;margin:0;padding:0;display:grid;gap:8px}
-.olist a{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;text-decoration:none;color:inherit}
-.olist .ot{flex:1;min-width:0}
-.olist .ot b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.olist .ot span{color:var(--muted);font-size:.85rem}
-.olist .amt{font-weight:900;white-space:nowrap}
 .empty{color:var(--muted);text-align:center;padding:22px 10px}
-.note-bar{background:var(--saffron-soft);border:1px solid #F3DC9A;color:#6B4E00;border-radius:12px;padding:10px 12px;font-size:.9rem;margin:12px 0}
+.note-bar{background:var(--saffron-soft);border:1px solid #F3DC9A;color:#6B4E00;border-radius:12px;padding:10px 12px;font-size:.92rem;margin:12px 0 0}
+.note-bar.green{background:var(--green-soft);border-color:#BFE3CD;color:#14532D}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+.steps{margin:8px 0 0;padding-inline-start:22px;font-size:.95rem;line-height:1.75}
+.howto{margin-top:14px}
+.howto h2{font-size:1.1rem;font-weight:900;margin:0 0 2px}
+.howto .row2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.howto .row2 .btn{padding:11px 8px;font-size:.92rem}
+.setup{margin-top:12px;border-top:1px dashed var(--line);padding-top:12px}
+.setup b.h{display:block;margin:10px 0 0}
+.code{direction:ltr;text-align:left;font-family:ui-monospace,Menlo,monospace;font-size:.72rem;background:#F6F1EC;border-radius:10px;padding:8px 10px;max-height:64px;overflow:hidden;color:#6b5f57;word-break:break-all;margin-top:8px}
+.foldbtn{border:0;background:none;color:var(--red);font-weight:800;padding:6px 0;font-size:.92rem}
 
-/* ---------- menu ---------- */
-.menu-tools{position:sticky;top:var(--topH,108px);z-index:10;background:var(--bg);padding:10px 0 6px}
-.search{position:relative}
-.search input{padding-inline-start:40px}
-.search svg{position:absolute;inset-inline-start:13px;top:50%;margin-top:-9px;width:18px;height:18px;fill:var(--muted)}
-.chips{display:flex;gap:6px;overflow-x:auto;padding:8px 0 2px;scrollbar-width:none}
-.chips::-webkit-scrollbar{display:none}
-.chips button{flex:none;border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:6px 13px;font-weight:700;font-size:.88rem;white-space:nowrap}
-.chips button.on{background:var(--coal);border-color:var(--coal);color:#fff}
-.cat h3{font-size:1.15rem;font-weight:900;margin:22px 2px 8px;display:flex;align-items:center;gap:8px}
-.cat h3::before{content:"";width:6px;height:20px;border-radius:3px;background:var(--red)}
-.items{display:grid;gap:8px}
-.item{display:flex;gap:12px;align-items:stretch;width:100%;text-align:start;background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px}
-.item:active{background:#FFF9F5}
-.thumb{width:84px;height:84px;flex:none;border-radius:11px;background:#F1E9E2 center/cover no-repeat;overflow:hidden}
-.thumb img{width:100%;height:100%;object-fit:cover}
-.item .it{flex:1;min-width:0;display:flex;flex-direction:column}
-.item .it b{font-size:1rem;line-height:1.35}
-.item .it small{color:var(--muted);font-size:.82rem;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-top:2px}
-.item .pr{margin-top:auto;padding-top:6px;display:flex;align-items:center;justify-content:space-between;gap:8px}
-.price{font-weight:900;color:var(--red);white-space:nowrap;display:inline-flex;align-items:baseline;gap:2px}
-.pfrom{display:inline-flex;align-items:baseline;gap:4px;white-space:nowrap}
-.price small{font-size:.72em;font-weight:700;color:var(--muted);margin-inline-start:3px}
-.plus{width:32px;height:32px;border-radius:50%;background:var(--red);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:1.3rem;font-weight:700;line-height:1;flex:none}
-.from{font-size:.75rem;color:var(--muted);font-weight:700}
-
-/* ---------- my bar ---------- */
-.mybar{position:fixed;inset-inline:0;bottom:0;z-index:15;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));
-  background:linear-gradient(180deg,rgba(250,246,242,0),var(--bg) 35%)}
-.mybar button{width:min(688px,100%);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:10px;border:0;border-radius:14px;background:var(--coal);color:#fff;padding:14px 16px;font-weight:800;font-size:1rem;box-shadow:0 8px 20px rgba(30,26,23,.25)}
-.mybar .c{background:var(--saffron);color:var(--coal);border-radius:999px;min-width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;margin-inline-end:8px;font-size:.9rem}
-main{padding-bottom:110px}
-
-/* ---------- order view ---------- */
 .people{display:grid;gap:12px;margin-top:14px}
 .person{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
 .person.me{border-color:var(--red);box-shadow:0 0 0 1px var(--red) inset}
@@ -117,28 +78,30 @@ main{padding-bottom:110px}
 .av{width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:900;color:#fff;flex:none;font-size:.95rem}
 .ph b{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ph .sub{font-weight:900;white-space:nowrap}
-.tag{font-size:.72rem;font-weight:800;border-radius:999px;padding:1px 8px;margin-inline-start:6px}
+.tag{font-size:.72rem;font-weight:800;border-radius:999px;padding:1px 8px;margin-inline-start:6px;white-space:nowrap}
 .tag.me{background:var(--red-soft);color:var(--red)}
-.tag.host{background:var(--saffron-soft);color:#7A5600}
 .tag.paid{background:var(--green-soft);color:var(--green)}
 .lines{list-style:none;margin:0;padding:0}
 .lines li{display:flex;gap:10px;align-items:flex-start;padding:11px 14px;border-top:1px dashed var(--line)}
 .lines li:first-child{border-top:0}
 .lines .ln{flex:1;min-width:0}
 .lines .ln b{display:block;font-size:.98rem}
-.lines .opts{color:var(--muted);font-size:.84rem;line-height:1.45}
-.lines .lnote{color:#8A5A00;font-size:.84rem}
+.opts{color:var(--muted);font-size:.84rem;line-height:1.45}
+.lnote{color:#8A5A00;font-size:.84rem}
 .lines .lp{font-weight:800;white-space:nowrap;text-align:end}
 .q{display:inline-flex;align-items:center;gap:6px;margin-top:6px}
 .q button{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--line);background:#fff;font-weight:900}
 .q .del{width:auto;border-radius:999px;padding:0 10px;color:var(--red);border-color:#F6C9CF;font-size:.82rem;font-weight:800}
+.pfoot{display:flex;justify-content:flex-end;padding:8px 14px 12px}
+.pfoot .del{border:1.5px solid #F6C9CF;background:#fff;color:var(--red);border-radius:999px;padding:4px 12px;font-weight:800;font-size:.82rem}
 .totalbox{display:flex;justify-content:space-between;align-items:center;background:var(--coal);color:#fff;border-radius:var(--r);padding:14px 16px;margin-top:14px;font-weight:900;font-size:1.1rem}
 .totalbox small{display:block;font-weight:500;font-size:.8rem;opacity:.75}
-.share{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.golink{display:block;text-align:center;margin-top:16px;color:var(--red);font-weight:800;text-decoration:none}
 
-/* ---------- prep / bill ---------- */
-.hostbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-.hostbar .btn{flex:1 1 140px}
+.orderer{margin-top:14px;border-color:#F3C9CF;background:#FFF8F8}
+.orderer h2{font-size:1.05rem;font-weight:900;margin:0 0 4px}
+.orderer .btn{margin-top:10px}
+.orderer .sep{border-top:1px dashed #F0CDD2;margin:16px 0 4px}
 .prep-cat{margin-top:16px}
 .prep-cat .pch{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 2px 8px}
 .prep-cat .pch b{font-size:1.02rem;font-weight:900}
@@ -154,11 +117,6 @@ main{padding-bottom:110px}
 .check .who{color:var(--muted);font-size:.8rem;margin-top:3px}
 .progress{height:8px;background:#EDE4DC;border-radius:999px;overflow:hidden;margin:8px 0 4px}
 .progress i{display:block;height:100%;background:var(--green);border-radius:999px;transition:width .25s}
-.fill{margin-top:14px;border-color:#F3C9CF;background:#FFF8F8}
-.fill-t{display:block;font-size:1.05rem;font-weight:900;margin-bottom:4px}
-.fill-steps{margin:6px 0 10px;padding-inline-start:20px;font-size:.92rem;line-height:1.7}
-.fill-row{display:flex;gap:8px;margin-top:8px}
-.fill-row .btn{flex:1;padding:11px 8px;font-size:.9rem}
 .bill{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:8px}
 .bill li{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
 .bill .bn{flex:1;min-width:0;font-weight:800}
@@ -166,41 +124,28 @@ main{padding-bottom:110px}
 .bill .ba{font-weight:900;font-size:1.05rem;white-space:nowrap}
 .paybtn{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;font-weight:800;font-size:.85rem;white-space:nowrap}
 .paybtn.on{background:var(--green);border-color:var(--green);color:#fff}
-.muted{color:var(--muted)}
-.small{font-size:.86rem}
+.share{display:grid;gap:8px;margin-top:12px}
 
-/* ---------- sheets ---------- */
+.olist{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px}
+.olist a{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;text-decoration:none;color:inherit}
+.olist .ot{flex:1;min-width:0}
+.olist .ot b{display:block}
+.olist .ot span{color:var(--muted);font-size:.85rem}
+.olist .amt{font-weight:900;white-space:nowrap}
+h1.pg{font-size:1.25rem;font-weight:900;margin:18px 2px 0}
+
 dialog{border:0;padding:0;width:min(560px,100%);max-height:92vh;border-radius:22px 22px 0 0;margin:auto auto 0;color:var(--ink);background:#fff}
 dialog::backdrop{background:rgba(20,14,10,.5)}
 @media (min-width:640px){dialog{border-radius:22px;margin:auto}}
-.sheet{max-height:92vh;overflow:auto;padding-bottom:calc(16px + env(safe-area-inset-bottom,0px))}
-.sheet .pad{padding:16px}
-.x{position:absolute;inset-inline-end:12px;top:12px;width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.92);font-size:1.1rem;z-index:2;box-shadow:0 2px 8px rgba(0,0,0,.12)}
-.sheet-img{aspect-ratio:16/10;background:#F1E9E2 center/cover no-repeat}
-.sheet h3{font-size:1.3rem;font-weight:900;margin:0 0 4px}
-.grp{margin-top:16px}
-.grp-h{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px}
-.grp-h b{font-weight:900}
-.req{font-size:.75rem;font-weight:800;border-radius:999px;padding:1px 9px;background:var(--red-soft);color:var(--red)}
-.req.opt{background:#F1ECE7;color:var(--muted)}
-.req.err{background:var(--red);color:#fff}
-.opt-row{display:flex;align-items:center;gap:10px;width:100%;text-align:start;border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:11px 12px;margin-top:6px}
-.opt-row .mk{width:22px;height:22px;flex:none;border:2px solid #CFC4BA;display:inline-flex;align-items:center;justify-content:center}
-.opt-row .mk.r{border-radius:50%}
-.opt-row .mk.c{border-radius:6px}
-.opt-row.on{border-color:var(--red);background:var(--red-soft)}
-.opt-row.on .mk{border-color:var(--red);background:var(--red);box-shadow:inset 0 0 0 3px #fff}
-.opt-row.on .mk.c{box-shadow:none;color:#fff}
-.opt-row .on-t{flex:1;font-weight:700}
-.opt-row .op{font-weight:800;white-space:nowrap;color:var(--muted)}
+.sheet{max-height:92vh;overflow:auto;display:flex;flex-direction:column}
+.sheet .pad{padding:18px 16px 8px}
+.sheet h3{font-size:1.3rem;font-weight:900;margin:0 0 2px}
+.sheet .lines li{padding:11px 0}
 .sheet-foot{position:sticky;bottom:0;background:#fff;border-top:1px solid var(--line);padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));display:flex;gap:10px;align-items:center}
-.stepper{display:flex;align-items:center;gap:8px}
-.stepper button{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line);background:#fff;font-size:1.2rem;font-weight:900}
-.stepper b{min-width:22px;text-align:center;font-size:1.1rem}
-.sheet-foot .btn{flex:1;margin:0}
+.sheet-foot .btn{flex:1}
+.sheet-foot .btn.line{flex:0 0 auto}
 .err-t{color:var(--red);font-size:.88rem;font-weight:700;min-height:1.2em;margin:8px 0 0}
-
-.toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%);background:var(--coal);color:#fff;padding:9px 16px;border-radius:999px;font-weight:700;font-size:.92rem;opacity:0;pointer-events:none;transition:opacity .2s;z-index:50;white-space:nowrap;max-width:92vw;overflow:hidden;text-overflow:ellipsis}
+.toast{position:fixed;left:50%;bottom:30px;transform:translateX(-50%);background:var(--coal);color:#fff;padding:9px 16px;border-radius:999px;font-weight:700;font-size:.92rem;opacity:0;pointer-events:none;transition:opacity .2s;z-index:50;white-space:nowrap;max-width:92vw;overflow:hidden;text-overflow:ellipsis}
 .toast.show{opacity:1}
 .loading{padding:60px 16px;text-align:center;color:var(--muted)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
@@ -208,158 +153,123 @@ dialog::backdrop{background:rgba(20,14,10,.5)}
 </head>
 <body>
 
-<!-- =============== HOME =============== -->
-<section id="home" hidden>
-  <div class="hero"><div class="wrap">
-    <div class="brand">🌯 بيت الشاورما <b>طلب جماعي</b></div>
-    <h1>نطلب مع بعض<br>في أوردر واحد</h1>
-    <p>افتح طلب، ابعت اللينك على الجروب، وكل واحد يختار أكله. وفي الآخر الحساب بيتقسم لوحده.</p>
-    <div class="steps"><span>١ افتح طلب</span><span>٢ ابعت اللينك</span><span>٣ اقفل واطلب</span></div>
-  </div></div>
-  <div class="wrap">
-    <div class="card home-card">
-      <label class="f" for="hName">اسمك</label>
-      <input class="t" id="hName" autocomplete="nickname" maxlength="30" placeholder="مثلًا: محمد">
-      <label class="f" for="hTitle">اسم الطلب (اختياري)</label>
-      <input class="t" id="hTitle" maxlength="60" placeholder="مثلًا: غدا المكتب">
-      <p class="err-t" id="hErr"></p>
-      <button class="btn primary" type="button" id="hCreate">افتح طلب جديد</button>
-    </div>
-    <div id="demoNote" class="note-bar" hidden>وضع التجربة: الطلب بيتحفظ على الجهاز ده بس. بعد ربط Firebase هيبقى مشترك بين الكل.</div>
-    <h2 class="sec">طلباتي</h2>
-    <ul class="olist" id="hOrders"></ul>
+<header class="top" id="top" hidden><div class="wrap">
+  <div class="row">
+    <a class="brand" href="#/">🌯 الطلب الجماعي</a>
+    <div class="title" id="oTitle"></div>
+    <span class="status" id="oStatus"></span>
+    <a class="pill" href="#/h" id="histBtn">السجل</a>
   </div>
-</section>
+  <nav class="tabs" id="tabs">
+    <button type="button" data-tab="all" class="on">الطلب <span class="n" id="nAll">0</span></button>
+    <button type="button" data-tab="prep">التجهيز</button>
+    <button type="button" data-tab="bill">الحساب</button>
+  </nav>
+</div></header>
 
-<!-- =============== ORDER =============== -->
-<section id="order" hidden>
-  <header class="top"><div class="wrap">
-    <div class="row">
-      <a class="brand" href="#/" aria-label="الرئيسية">🌯</a>
-      <div class="title" id="oTitle"></div>
-      <span class="status" id="oStatus"></span>
-      <button class="pill" type="button" id="oShare">مشاركة</button>
-    </div>
-    <nav class="tabs" role="tablist">
-      <button type="button" data-tab="menu" class="on">المنيو</button>
-      <button type="button" data-tab="all">الطلب <span class="n" id="nAll">0</span></button>
-      <button type="button" data-tab="prep" id="tabPrep">التجهيز</button>
-      <button type="button" data-tab="bill">الحساب</button>
-    </nav>
-  </div></header>
+<main class="wrap" id="main" hidden>
+  <div id="oldNote" class="note-bar" hidden></div>
+  <div id="demoNote" class="note-bar" hidden>وضع التجربة: البيانات على الجهاز ده بس.</div>
 
-  <main class="wrap">
-    <!-- menu tab -->
-    <div id="t-menu">
-      <div class="menu-tools">
-        <div class="search">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2a8 8 0 0 1 6.32 12.9l5.39 5.4-1.41 1.41-5.4-5.39A8 8 0 1 1 10 2zm0 2a6 6 0 1 0 0 12 6 6 0 0 0 0-12z"/></svg>
-          <input class="t" id="q" type="search" placeholder="دوّر على صنف… شاورما، عربي، بطاطس" autocomplete="off">
-        </div>
-        <div class="chips" id="chips"></div>
+  <!-- order tab -->
+  <div id="t-all">
+    <div id="lockNote" class="note-bar" hidden></div>
+    <div class="card howto" id="howto">
+      <h2>ضيف طلبك في ٣ خطوات</h2>
+      <ol class="steps">
+        <li>افتح موقع <b>بيت الشاورما</b> واختار أكلك وحطه في السلة.</li>
+        <li>افتح المفضلة <b>📖</b> ودوس على اختصار <b>«طلب جماعي»</b>.</li>
+        <li>هيفتحلك هنا بطلبك، راجعه واكتب اسمك ودوس <b>حفظ</b>.</li>
+      </ol>
+      <div class="row2">
+        <a class="btn primary" id="goShop" href="https://order.shawarmahouse.com.sa/menu" target="_blank" rel="noopener">افتح بيت الشاورما</a>
+        <button class="btn line" type="button" id="setupBtn">اعمل الاختصار</button>
       </div>
-      <div id="locked1" class="note-bar" hidden>الطلب اتقفل، مش هينفع تضيف أصناف دلوقتي.</div>
-      <div id="menuList"><div class="loading">جاري تحميل المنيو…</div></div>
-    </div>
-
-    <!-- everyone's order -->
-    <div id="t-all" hidden>
-      <div class="people" id="people"></div>
-      <div class="totalbox" id="grand" hidden></div>
-      <div class="share">
-        <button class="btn ghost" type="button" id="shareWa">ابعت اللينك واتساب</button>
-        <button class="btn ghost" type="button" id="copyLink">نسخ اللينك</button>
+      <div class="setup" id="setup" hidden>
+        <p class="small" style="margin:0">الاختصار بيتعمل <b>مرة واحدة بس</b> على موبايلك.</p>
+        <button class="btn dark w" type="button" id="bmCopy" style="margin-top:10px">١- انسخ كود الاختصار</button>
+        <div class="code" id="bmCode"></div>
+        <b class="h">على الآيفون (Safari):</b>
+        <ol class="steps small">
+          <li>وإنت على الصفحة دي، دوس زرار المشاركة <b>⬆︎</b> ← <b>Add Bookmark</b>.</li>
+          <li>غيّر الاسم لـ <b>طلب جماعي</b> ← <b>Save</b>.</li>
+          <li>افتح المفضلة <b>📖</b> ← <b>Edit</b> ← دوس على «طلب جماعي».</li>
+          <li>امسح العنوان اللي في الخانة التانية، والصق الكود اللي نسخته ← <b>Done</b>.</li>
+        </ol>
+        <b class="h">على أندرويد (Chrome):</b>
+        <ol class="steps small">
+          <li>دوس ⋮ ← النجمة ☆ عشان تحفظ الصفحة، وبعدين <b>Edit</b>.</li>
+          <li>غيّر الاسم لـ <b>طلب جماعي</b>، وامسح الـ URL والصق الكود.</li>
+          <li>وإنت على موقع بيت الشاورما، اكتب <b>طلب جماعي</b> في شريط العنوان ودوس عليه من الاقتراحات.</li>
+        </ol>
+        <b class="h">على الكمبيوتر:</b>
+        <p class="small" style="margin:4px 0 0">كليك يمين على شريط المفضلة ← Add page ← الاسم «طلب جماعي» والـ URL الصق الكود.</p>
       </div>
     </div>
+    <div class="people" id="people"></div>
+    <div class="totalbox" id="grand" hidden></div>
+    <a class="golink" href="#" id="toPrep">إنت اللي هتطلب من بيت الشاورما؟ ←</a>
+  </div>
 
-    <!-- prep checklist (host) -->
-    <div id="t-prep" hidden>
-      <div id="prepGuest" class="note-bar" hidden>القايمة دي لصاحب الطلب. هو اللي هيضيف الأصناف على موقع بيت الشاورما.</div>
-      <div class="hostbar" id="hostBar"></div>
-      <div id="fillBox" hidden>
-        <div class="fill card">
-          <b class="fill-t">املأ سلة بيت الشاورما في ثانية</b>
-          <ol class="fill-steps">
-            <li>اضغط الزرار ده، هيفتح موقعهم.</li>
-            <li>هناك، افتح المفضلة واختار اختصار <b>«املأ السلة»</b>.</li>
-            <li>هتلاقي الطلب كله في السلة. راجعه وادفع.</li>
-          </ol>
-          <a class="btn primary" id="fillGo" target="_blank" rel="noopener">افتح بيت الشاورما بالطلب</a>
-          <div class="fill-row"><button class="btn ghost" type="button" id="fillCopy">نسخ كود الطلب</button><button class="btn ghost" type="button" id="fillHow">إعداد الاختصار (مرة واحدة)</button></div>
-          <div id="fillSetup" hidden>
-            <p class="small" style="margin:12px 0 6px"><b>على الآيفون (Safari):</b></p>
-            <ol class="fill-steps">
-              <li>اضغط <b>نسخ الاختصار</b> تحت.</li>
-              <li>في Safari اضغط زرار المشاركة <b>⬆︎</b> ← <b>Add Bookmark</b> ← سمّيه <b>املأ السلة</b> ← <b>Save</b>.</li>
-              <li>افتح المفضلة <b>📖</b> ← <b>Edit</b> ← اضغط على «املأ السلة» ← امسح العنوان اللي في الخانة التانية والصق الاختصار ← <b>Done</b>.</li>
-            </ol>
-            <p class="small" style="margin:10px 0 6px"><b>على الكمبيوتر (Chrome):</b> كليك يمين على شريط المفضلة ← Add page ← الاسم «املأ السلة» والـ URL الصق الاختصار.</p>
-            <button class="btn dark" type="button" id="bmCopy" style="width:100%">نسخ الاختصار</button>
-            <p class="muted small" style="margin:8px 0 0">لو موقع بيت الشاورما اتغير والاختصار مشتغلش، كمّل بالقايمة اللي تحت عادي.</p>
-          </div>
-        </div>
-      </div>
-      <div id="prepHead"></div>
-      <div id="prepList"></div>
-    </div>
+  <!-- prep tab -->
+  <div id="t-prep" hidden>
+    <div class="card orderer" id="orderer"></div>
+    <div id="prepHead"></div>
+    <div id="prepList"></div>
+  </div>
 
-    <!-- bill -->
-    <div id="t-bill" hidden>
-      <p class="muted small" style="margin:14px 2px 0">كل واحد عليه حساب أصنافه بس، من غير التوصيل. الأسعار من نسخة المنيو اللي عندنا، فلو سعر اتغير على موقعهم الإجمالي هناك ممكن يفرق شوية.</p>
-      <ul class="bill" id="billList"></ul>
-      <div class="totalbox" id="billTotal"></div>
-      <div class="share"><button class="btn green" type="button" id="billWa" style="grid-column:1/-1">ابعت الحساب على الجروب</button></div>
-    </div>
-  </main>
+  <!-- bill tab -->
+  <div id="t-bill" hidden>
+    <p class="muted small" style="margin:14px 2px 0">كل واحد عليه حساب أصنافه بس، من غير التوصيل. الأسعار من موقع بيت الشاورما وقت ما بعت طلبه.</p>
+    <ul class="bill" id="billList"></ul>
+    <div class="totalbox" id="billTotal"></div>
+    <div class="share"><button class="btn green" type="button" id="billWa">ابعت الحساب على الجروب</button></div>
+  </div>
+</main>
 
-  <div class="mybar" id="mybar" hidden><button type="button" id="myBtn"><span><span class="c" id="myCount">0</span>طلبي</span><span id="myTotal"></span></button></div>
-</section>
+<!-- history -->
+<main class="wrap" id="hist" hidden>
+  <h1 class="pg">الطلبات القديمة</h1>
+  <ul class="olist" id="hList"></ul>
+</main>
 
 <div class="loading" id="boot">جاري التحميل…</div>
 
-<!-- item sheet -->
-<dialog id="itemDlg"><div class="sheet" style="position:relative">
-  <button class="x" type="button" data-close aria-label="إغلاق">✕</button>
-  <div class="sheet-img" id="iImg"></div>
+<!-- review sheet -->
+<dialog id="addDlg"><div class="sheet">
   <div class="pad">
-    <h3 id="iName"></h3>
-    <div class="muted small" id="iDesc"></div>
-    <div id="iGroups"></div>
-    <label class="f" for="iNote">ملاحظة (اختياري)</label>
-    <input class="t" id="iNote" maxlength="80" placeholder="مثلًا: زيادة صوص">
-    <p class="err-t" id="iErr"></p>
+    <h3>راجع طلبك</h3>
+    <div class="muted small">ده اللي في سلتك على موقع بيت الشاورما.</div>
+    <div id="aNote"></div>
+    <ul class="lines" id="aLines" style="margin-top:8px"></ul>
+    <div class="totalbox" id="aTotal" style="margin-top:6px"></div>
+    <label class="f" for="aName">اسمك</label>
+    <input class="t" id="aName" maxlength="30" autocomplete="nickname" placeholder="مثلًا: أحمد">
+    <p class="err-t" id="aErr"></p>
   </div>
   <div class="sheet-foot">
-    <div class="stepper"><button type="button" id="iPlus" aria-label="زود">+</button><b id="iQty">1</b><button type="button" id="iMinus" aria-label="قلل">−</button></div>
-    <button class="btn primary" type="button" id="iAdd"></button>
+    <button class="btn line" type="button" id="aCancel">إلغاء</button>
+    <button class="btn primary" type="button" id="aSave">حفظ طلبي</button>
   </div>
 </div></dialog>
-
-<!-- name sheet -->
-<dialog id="nameDlg"><div class="sheet"><div class="pad">
-  <h3>اسمك إيه؟</h3>
-  <p class="muted small" style="margin:4px 0 0">عشان صاحب الطلب يعرف ده أكل مين.</p>
-  <input class="t" id="nName" maxlength="30" autocomplete="nickname" style="margin-top:12px" placeholder="اكتب اسمك">
-  <p class="err-t" id="nErr"></p>
-  <button class="btn primary" type="button" id="nOk">تمام</button>
-</div></div></dialog>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="config.js"></script>
 <script type="module">
-/* ============================================================
-   Data layer: Firebase (shared) or local demo (this device only)
-   ============================================================ */
 const FB_VER = "10.12.2";
 const CFG = window.FIREBASE_CONFIG && window.FIREBASE_CONFIG.apiKey && !/PASTE/.test(window.FIREBASE_CONFIG.apiKey) ? window.FIREBASE_CONFIG : null;
+const SHOP = "https://order.shawarmahouse.com.sa/menu";
+const BOOKMARKLET = "javascript:(function()%7Btry%7Bvar%20BASE%3D%22https%3A%2F%2Fshawrmahouse.github.io%2FOrder%2F%22%3Bvar%20N%3Dwindow.%24nuxt%2CS%3DN%26%26N.%24store%3Bif(!S%7C%7C!S.state%7C%7C!S.state.concept)%7Balert(%22%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D8%B5%D8%A7%D8%B1%20%D8%AF%D9%87%20%D8%A8%D9%8A%D8%B4%D8%AA%D8%BA%D9%84%20%D8%B9%D9%84%D9%89%20%D9%85%D9%88%D9%82%D8%B9%20%D8%A8%D9%8A%D8%AA%20%D8%A7%D9%84%D8%B4%D8%A7%D9%88%D8%B1%D9%85%D8%A7.%5Cn%D8%A7%D9%81%D8%AA%D8%AD%20order.shawarmahouse.com.sa%20%D9%88%D8%A7%D8%B7%D9%84%D8%A8%D8%8C%20%D9%88%D8%A8%D8%B9%D8%AF%D9%8A%D9%86%20%D8%AF%D9%88%D8%B3%D9%87.%22)%3Breturn%7Dvar%20st%3DS.state%3Bif(!st.concept.categoryItems%7C%7C!st.concept.categoryItems.length)%7Balert(%22%D8%A7%D9%84%D9%85%D9%86%D9%8A%D9%88%20%D9%84%D8%B3%D9%87%20%D8%A8%D9%8A%D8%AD%D9%85%D9%91%D9%84%D8%8C%20%D8%A7%D8%B3%D8%AA%D9%86%D9%89%20%D8%AB%D8%A7%D9%86%D9%8A%D8%A9%20%D9%88%D8%AC%D8%B1%D8%A8%20%D8%AA%D8%A7%D9%86%D9%8A%22)%3Breturn%7Dvar%20nm%3Dfunction(x)%7Bif(x%26%26typeof%20x%3D%3D%22object%22)%7Breturn%20x%5B%22ar-sa%22%5D%7C%7Cx.ar%7C%7Cx%5B%22en-us%22%5D%7C%7Cx%5BObject.keys(x)%5B0%5D%5D%7C%7C%22%22%7Dreturn%20x%3D%3Dnull%3F%22%22%3AString(x)%7D%3Bvar%20G%3D%7B%7D%2CM%3D%7B%7D%2CI%3D%7B%7D%2CC%3D%7B%7D%3Bst.concept.modifierGroups.forEach(function(g)%7BG%5Bg.id%5D%3Dg.attributes%7D)%3Bst.concept.modifiers.forEach(function(m)%7BM%5Bm.id%5D%3Dm.attributes%7D)%3Bst.concept.categoryItems.forEach(function(c%2Cci)%7B(c.attributes.items%7C%7C%5B%5D).forEach(function(i%2Cii)%7BI%5Bi.id%5D%3Di%3BC%5Bi.id%5D%3D%5Bc.id%2Cnm((c.attributes.category%7C%7C%7B%7D).name%7C%7Cc.attributes.name)%2Cci%2Cii%5D%7D)%7D)%3Bvar%20groups%3Dfunction(it)%7Breturn(it%5B%22modifier-groups%22%5D%7C%7C%5B%5D).map(function(g)%7Bvar%20o%3Dtypeof%20g%3D%3D%22object%22%3Fg%3A%7Bid%3Ag%7D%2Cgg%3DG%5Bo.id%5D%7C%7C%7B%7D%2Cown%3Do.modifiers%26%26o.modifiers.length%3Breturn%7Bid%3Ao.id%2Cg%3Agg%2Cmin%3Ao.min!%3Dnull%3Fo.min%3Agg.minimum%2Cmax%3Ao.max!%3Dnull%3Fo.max%3Agg.maximum%2Cids%3A(own%3Fo.modifiers%3Agg.modifiers%7C%7C%5B%5D).map(function(x)%7Breturn%20typeof%20x%3D%3D%22object%22%3Fx.id%3Ax%7D)%7D%7D)%7D%3Bvar%20groupOf%3Dfunction(igs%2Cmid)%7Bfor(var%20k%3D0%3Bk%3Cigs.length%3Bk%2B%2B)%7Bif(igs%5Bk%5D.ids.indexOf(mid)%3E-1)return%20igs%5Bk%5D%7Dreturn%20null%7D%3Bvar%20raw%3D(location.hash.match(%2Fgx%3D(%5B%5E%26%5D%2B)%2F)%7C%7C%5B%5D)%5B1%5D%2Cdata%3Dnull%3Bif(raw)%7Btry%7Bdata%3DJSON.parse(decodeURIComponent(raw))%7Dcatch(e)%7B%7D%7Dif(!data%26%26!st.cart.items.length)%7Bvar%20t%3Dprompt(%22%D8%B3%D9%84%D8%AA%D9%83%20%D9%81%D8%A7%D8%B6%D9%8A%D8%A9.%5Cn%5Cn%D8%A7%D8%AE%D8%AA%D8%A7%D8%B1%20%D8%A3%D9%83%D9%84%D9%83%20%D9%85%D9%86%20%D8%A7%D9%84%D9%85%D9%88%D9%82%D8%B9%20%D9%88%D8%AD%D8%B7%D9%87%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%B3%D9%84%D8%A9%D8%8C%20%D9%88%D8%A8%D8%B9%D8%AF%D9%8A%D9%86%20%D8%AF%D9%88%D8%B3%20%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D8%B5%D8%A7%D8%B1%20%D8%AA%D8%A7%D9%86%D9%8A.%5Cn%5Cn(%D9%84%D9%88%20%D9%85%D8%B9%D8%A7%D9%83%20%D9%83%D9%88%D8%AF%20%D8%A7%D9%84%D8%B7%D9%84%D8%A8%20%D8%A7%D9%84%D8%AC%D9%85%D8%A7%D8%B9%D9%8A%20%D8%B9%D8%B4%D8%A7%D9%86%20%D8%AA%D9%85%D9%84%D8%A7%20%D8%A7%D9%84%D8%B3%D9%84%D8%A9%D8%8C%20%D8%A7%D9%84%D8%B5%D9%82%D9%87%20%D9%87%D9%86%D8%A7)%22)%3Bif(!t)return%3Btry%7Bdata%3DJSON.parse(t.trim())%7Dcatch(e)%7Balert(%22%D8%A7%D9%84%D9%83%D9%88%D8%AF%20%D8%AF%D9%87%20%D9%85%D8%B4%20%D8%B5%D8%AD%D9%8A%D8%AD%22)%3Breturn%7D%7Dif(!data)%7Bvar%20out%3Dst.cart.items.map(function(ci)%7Bvar%20it%3DI%5Bci.id%5D%7C%7C%7B%7D%2Cc%3DC%5Bci.id%5D%7C%7C%5B0%2C%22%22%2C999%2C0%5D%2Cigs%3Dgroups(it)%2Cbase%3Dit.price!%3Dnull%3Fit.price%3A(ci.price%7C%7C0)%2Cadd%3D0%2Co%3D%5B%5D%3B(ci.modifiers%7C%7C%5B%5D).forEach(function(m)%7Bvar%20mm%3DM%5Bm.id%5D%7C%7Cm%2Cq%3Dm.quantity%7C%7C1%2Cig%3DgroupOf(igs%2Cm.id)%2Csize%3Dm.isSize%7C%7C(ig%26%26ig.g.type%3D%3D%22sizes%22)%2Cp%3Dmm.price!%3Dnull%3Fmm.price%3A(m.price%7C%7C0)%3Bif(size)%7Bbase%3Dp%7Delse%7Badd%2B%3Dp*q%7Do.push(%5Bm.id%2Cnm(mm.name%7C%7Cm.name)%2Cp%2Csize%3F1%3A0%2Cq%5D)%7D)%3Breturn%5Bci.id%2Cnm(it.name%7C%7Cci.name)%2Cc%5B0%5D%2Cc%5B1%5D%2Cc%5B2%5D%2Cc%5B3%5D%2Cci.quantity%7C%7C1%2Cbase%2Badd%2Cci.notes%7C%7Cnull%2Co%5D%7D)%3Blocation.href%3DBASE%2B%22%23add%3D%22%2BencodeURIComponent(JSON.stringify(out))%3Breturn%7Dif(st.cart.items.length%26%26!confirm(%22%D8%A7%D9%84%D8%B3%D9%84%D8%A9%20%D9%81%D9%8A%D9%87%D8%A7%20%D8%A3%D8%B5%D9%86%D8%A7%D9%81%20%D8%AF%D9%84%D9%88%D9%82%D8%AA%D9%8A.%20%D8%A3%D9%85%D8%B3%D8%AD%D9%87%D8%A7%20%D9%88%D8%A3%D8%AD%D8%B7%20%D8%A7%D9%84%D8%B7%D9%84%D8%A8%20%D8%A7%D9%84%D8%AC%D9%85%D8%A7%D8%B9%D9%8A%D8%9F%22))return%3BS.commit(%22cart%2FEMPTY_CART%22)%3Bvar%20pcs%3D0%2Cskip%3D%5B%5D%3Bdata.forEach(function(r)%7Bvar%20id%3Dr%5B0%5D%2Cmods%3Dr%5B1%5D%7C%7C%5B%5D%2Cq%3Dr%5B2%5D%7C%7C1%2Cnote%3Dr%5B3%5D%7C%7Cnull%2Cname%3Dr%5B4%5D%7C%7CString(id)%2Cit%3DI%5Bid%5D%3Bif(!it%7C%7Cit.enabled%3D%3D%3Dfalse)%7Bskip.push(name)%3Breturn%7Dvar%20igs%3Dgroups(it)%2Cbase%3Dit.price%2Cadd%3D0%2Cout%3D%5B%5D%2Cbad%3Dfalse%2Cidx%3D0%2Ccnt%3D%7B%7D%2Cord%3D%5B%5D%3Bmods.forEach(function(mid)%7Bif(!cnt%5Bmid%5D)%7Bcnt%5Bmid%5D%3D0%3Bord.push(mid)%7Dcnt%5Bmid%5D%2B%2B%7D)%3Bord.forEach(function(mid)%7Bvar%20m%3DM%5Bmid%5D%2Cig%3DgroupOf(igs%2Cmid)%2Cn%3Dcnt%5Bmid%5D%3Bif(!m%7C%7C!ig)%7Bbad%3Dtrue%3Breturn%7Dvar%20g%3Dig.g%3Bidx%2B%2B%3Bif(g.type%3D%3D%22sizes%22)%7Bbase%3Dm.price%3Bout.push(%7Bid%3Amid%2Cname%3Am.name%2Cprice%3Am.price%2Cnotes%3A%22%22%2Cquantity%3A1%2CisSize%3Atrue%2Cprices%3A%5B%5D%7D)%7Delse%7Badd%2B%3Dm.price*n%3Bout.push(%7Bid%3Amid%2Cname%3Am.name%2Cprice%3Am.price%2Cnotes%3A%22%22%2Cquantity%3An%2Cmodifiers%3A%5B%5D%2CisSize%3Afalse%2Cmaximum%3Aig.max%2Cminimum%3Aig.min%2Cmodifier_group_id%3Aig.id%2C%22free-modifiers-count%22%3A0%2Cprices%3A%5B%5D%2CoriginalPrice%3Am.price%2Cindex%3Aidx%7D)%7D%7D)%3Bif(bad)%7Bskip.push(name)%3Breturn%7DS.commit(%22cart%2FADD_ITEM%22%2C%7Bid%3Ait.id%2Cprice%3Ait.price%2Cdescription%3Ait.description%2Cquantity%3Aq%2Cnotes%3Anote%2Cname%3Ait.name%2CimgUrl%3Ait%5B%22image-uri%22%5D%2Cdiscount%3A0%2C%22combo-items%22%3A%5B%5D%2C%22excluded-locations%22%3Ait%5B%22excluded-locations%22%5D%7C%7C%5B%5D%2C%22out-of-stock-locations%22%3Ait%5B%22out-of-stock-locations%22%5D%7C%7C%5B%5D%2Cmodifiers%3Aout%2Cingredients%3A%5B%5D%2Ctotal%3Abase%2Badd%2Cprices%3A%5B%5D%7D)%3Bpcs%2B%3Dq%7D)%3BlocalStorage.setItem(%22items%22%2CJSON.stringify(st.cart.items))%3Bhistory.replaceState(null%2C%22%22%2Clocation.pathname)%3Balert(%22%D8%A7%D8%AA%D8%B6%D8%A7%D9%81%20%22%2Bpcs%2B%22%20%D8%B5%D9%86%D9%81%20%D9%84%D9%84%D8%B3%D9%84%D8%A9%20%E2%9C%94%22%2B(skip.length%3F%22%5Cn%5Cn%D8%AF%D9%88%D9%84%20%D9%85%D8%B4%20%D9%84%D8%A7%D9%82%D9%8A%D9%87%D9%85%20%D8%A8%D9%86%D9%81%D8%B3%20%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D9%8A%D8%A7%D8%B1%D8%A7%D8%AA%D8%8C%20%D8%B6%D9%8A%D9%81%D9%87%D9%85%20%D8%A8%D8%A5%D9%8A%D8%AF%D9%83%3A%5Cn-%20%22%2Bskip.join(%22%5Cn-%20%22)%3A%22%22))%3Bvar%20cb%3D%5B%5D.slice.call(document.querySelectorAll(%22button%2Ca%22)).find(function(b)%7Breturn%2F%D8%B9%D8%B1%D8%B6%20%D8%A7%D9%84%D8%B7%D9%84%D8%A8%D8%A7%D8%AA%7CView%2Fi.test(b.innerText%7C%7C%22%22)%7D)%3Bif(cb)cb.click()%3B%7Dcatch(e)%7Balert(%22%D8%AD%D8%B5%D9%84%D8%AA%20%D9%85%D8%B4%D9%83%D9%84%D8%A9%3A%20%22%2Be.message)%7D%7D)()%3B";
 
-function rid(n = 10){ const a = "abcdefghjkmnpqrstuvwxyz23456789"; let s = ""; const r = crypto.getRandomValues(new Uint8Array(n)); for (const x of r) s += a[x % a.length]; return s; }
+function rid(n = 10){ const a = "abcdefghjkmnpqrstuvwxyz23456789"; let s = ""; for (const x of crypto.getRandomValues(new Uint8Array(n))) s += a[x % a.length]; return s; }
 const store = {
   get(k, d){ try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch { return d; } },
   set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
 };
+const ts = v => v == null ? 0 : typeof v === "number" ? v : v.toMillis ? v.toMillis() : 0;
 
+/* ================= data: Firebase ================= */
 async function firebaseBackend(){
   const app = await import(`https://www.gstatic.com/firebasejs/${FB_VER}/firebase-app.js`);
   const auth = await import(`https://www.gstatic.com/firebasejs/${FB_VER}/firebase-auth.js`);
@@ -371,410 +281,82 @@ async function firebaseBackend(){
     const stop = auth.onAuthStateChanged(au, u => { if (u) { stop(); res(u); } });
     auth.signInAnonymously(au).catch(rej);
   });
+  const uid = user.uid;
+  const meta = fs.doc(db, "meta", "current");
   const oref = id => fs.doc(db, "orders", id);
-  const lcol = id => fs.collection(db, "orders", id, "lines");
+  const pref = (id, u) => fs.doc(db, "orders", id, "people", u);
+  const pcol = id => fs.collection(db, "orders", id, "people");
+  const newOrderData = () => ({ status: "open", createdAt: fs.serverTimestamp(), checked: {}, paid: {} });
   return {
-    shared: true, uid: user.uid,
-    async createOrder(data){ const id = rid(10); await fs.setDoc(oref(id), { ...data, createdAt: fs.serverTimestamp() }); return id; },
+    shared: true, uid,
+    watchCurrent(cb, err){ return fs.onSnapshot(meta, s => cb(s.exists() ? s.data().id : null), err); },
     watchOrder(id, cb, err){ return fs.onSnapshot(oref(id), s => cb(s.exists() ? { id, ...s.data() } : null), err); },
-    watchLines(id, cb, err){ return fs.onSnapshot(fs.query(lcol(id), fs.orderBy("at")), s => cb(s.docs.map(d => ({ id: d.id, ...d.data() }))), err); },
-    addLine(id, line){ return fs.addDoc(lcol(id), { ...line, at: Date.now() }); },
-    updateLine(id, lid, patch){ return fs.updateDoc(fs.doc(db, "orders", id, "lines", lid), patch); },
-    deleteLine(id, lid){ return fs.deleteDoc(fs.doc(db, "orders", id, "lines", lid)); },
-    updateOrder(id, patch){ return fs.updateDoc(oref(id), patch); },
+    watchPeople(id, cb, err){ return fs.onSnapshot(pcol(id), s => cb(s.docs.map(d => ({ uid: d.id, ...d.data() }))), err); },
+    async submit(person){
+      return fs.runTransaction(db, async tx => {
+        const m = await tx.get(meta);
+        let id = m.exists() ? m.data().id : null, fresh = false;
+        const o = id ? await tx.get(oref(id)) : null;
+        if (!o || !o.exists() || o.data().status !== "open") {
+          id = rid(10); fresh = !!(o && o.exists());
+          tx.set(oref(id), newOrderData());
+          tx.set(meta, { id, at: fs.serverTimestamp() });
+        }
+        tx.set(pref(id, uid), { ...person, at: Date.now() });
+        return { id, fresh };
+      });
+    },
+    setMine(id, data){ return data ? fs.setDoc(pref(id, uid), { ...data, at: Date.now() }) : fs.deleteDoc(pref(id, uid)); },
+    lock(id, by){ return fs.updateDoc(oref(id), { status: "locked", lockedBy: by || "", lockedAt: Date.now() }); },
+    async newOrder(){ const id = rid(10); const b = fs.writeBatch(db); b.set(oref(id), newOrderData()); b.set(meta, { id, at: fs.serverTimestamp() }); await b.commit(); return id; },
     setField(id, path, value){ return fs.updateDoc(oref(id), { [path]: value === null ? fs.deleteField() : value }); },
-    async getOrder(id){ const s = await fs.getDoc(oref(id)); return s.exists() ? { id, ...s.data() } : null; },
-    async getLines(id){ const s = await fs.getDocs(lcol(id)); return s.docs.map(d => ({ id: d.id, ...d.data() })); }
+    async history(){
+      const s = await fs.getDocs(fs.query(fs.collection(db, "orders"), fs.orderBy("createdAt", "desc"), fs.limit(30)));
+      return s.docs.map(d => ({ id: d.id, ...d.data() }));
+    },
+    async people(id){ const s = await fs.getDocs(pcol(id)); return s.docs.map(d => ({ uid: d.id, ...d.data() })); }
   };
 }
 
+/* ================= data: local demo ================= */
 function localBackend(){
   let uid = store.get("go_uid", null); if (!uid) { uid = "local-" + rid(12); store.set("go_uid", uid); }
-  const key = id => "go_order_" + id;
-  const read = id => store.get(key(id), null);
+  const db = () => store.get("go_db", { cur: null, orders: {} });
   const subs = new Set();
-  const emit = () => subs.forEach(f => f());
-  window.addEventListener("storage", e => { if (e.key && e.key.startsWith("go_order_")) emit(); });
-  const write = (id, o) => { store.set(key(id), o); emit(); };
+  const save = d => { store.set("go_db", d); subs.forEach(f => f()); };
+  window.addEventListener("storage", e => { if (e.key === "go_db") subs.forEach(f => f()); });
+  const sub = f => { subs.add(f); f(); return () => subs.delete(f); };
+  const mk = d => { const id = rid(10); d.orders[id] = { o: { status: "open", createdAt: Date.now(), checked: {}, paid: {} }, p: {} }; d.cur = id; return id; };
   return {
     shared: false, uid,
-    async createOrder(data){ const id = rid(10); write(id, { order: { ...data, createdAt: Date.now() }, lines: {} }); return id; },
-    watchOrder(id, cb){ const f = () => { const o = read(id); cb(o ? { id, ...o.order } : null); }; subs.add(f); f(); return () => subs.delete(f); },
-    watchLines(id, cb){ const f = () => { const o = read(id); cb(o ? Object.entries(o.lines).map(([k, v]) => ({ id: k, ...v })).sort((a, b) => a.at - b.at) : []); }; subs.add(f); f(); return () => subs.delete(f); },
-    async addLine(id, line){ const o = read(id); if (o.order.status !== "open") throw new Error("locked"); o.lines[rid(12)] = { ...line, at: Date.now() }; write(id, o); },
-    async updateLine(id, lid, patch){ const o = read(id); Object.assign(o.lines[lid], patch); write(id, o); },
-    async deleteLine(id, lid){ const o = read(id); delete o.lines[lid]; write(id, o); },
-    async updateOrder(id, patch){ const o = read(id); Object.assign(o.order, patch); write(id, o); },
-    async setField(id, path, value){ const o = read(id); const [a, b] = path.split("."); o.order[a] = o.order[a] || {}; if (value === null) delete o.order[a][b]; else o.order[a][b] = value; write(id, o); },
-    async getOrder(id){ const o = read(id); return o ? { id, ...o.order } : null; },
-    async getLines(id){ const o = read(id); return o ? Object.entries(o.lines).map(([k, v]) => ({ id: k, ...v })) : []; }
+    watchCurrent(cb){ return sub(() => cb(db().cur)); },
+    watchOrder(id, cb){ return sub(() => { const x = db().orders[id]; cb(x ? { id, ...x.o } : null); }); },
+    watchPeople(id, cb){ return sub(() => { const x = db().orders[id]; cb(x ? Object.entries(x.p).map(([u, v]) => ({ uid: u, ...v })) : []); }); },
+    async submit(person){
+      const d = db(); let id = d.cur, fresh = false;
+      if (!id || !d.orders[id] || d.orders[id].o.status !== "open") { fresh = !!(id && d.orders[id]); id = mk(d); }
+      d.orders[id].p[uid] = { ...person, at: Date.now() }; save(d); return { id, fresh };
+    },
+    async setMine(id, data){ const d = db(); const x = d.orders[id]; if (x.o.status !== "open") throw new Error("locked"); if (data) x.p[uid] = { ...data, at: Date.now() }; else delete x.p[uid]; save(d); },
+    async lock(id, by){ const d = db(); Object.assign(d.orders[id].o, { status: "locked", lockedBy: by || "", lockedAt: Date.now() }); save(d); },
+    async newOrder(){ const d = db(); const id = mk(d); save(d); return id; },
+    async setField(id, path, value){ const d = db(); const [a, b] = path.split("."); const o = d.orders[id].o; o[a] = o[a] || {}; if (value === null) delete o[a][b]; else o[a][b] = value; save(d); },
+    async history(){ const d = db(); return Object.entries(d.orders).map(([id, x]) => ({ id, ...x.o })).sort((a, b) => b.createdAt - a.createdAt).slice(0, 30); },
+    async people(id){ const x = db().orders[id]; return x ? Object.entries(x.p).map(([u, v]) => ({ uid: u, ...v })) : []; }
   };
 }
 
-/* ============================================================
-   App
-   ============================================================ */
+/* ================= helpers ================= */
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const num = v => (Math.round(v * 100) / 100).toLocaleString("en-US");
-let CUR = "ر.س";
+const CUR = "ر.س";
 const money = v => num(v) + " " + CUR;
-const toast = t => { const el = $("toast"); el.textContent = t; el.classList.add("show"); clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove("show"), 1700); };
+const toast = (t, ms = 1900) => { const el = $("toast"); el.textContent = t; el.classList.add("show"); clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove("show"), ms); };
 const COLORS = ["#C8102E", "#1F8A4C", "#2F5FD0", "#B5651D", "#7A3FB8", "#0E8A8A", "#C2185B", "#5D6B00"];
 const colorOf = s => { let h = 0; for (const c of String(s)) h = (h * 31 + c.charCodeAt(0)) >>> 0; return COLORS[h % COLORS.length]; };
-document.addEventListener("click", e => { const c = e.target.closest("[data-close]"); if (c) c.closest("dialog").close(); });
-
-let B, MENU, ITEMS = {}, CATS = {};
-let O = null, LINES = [], unsub = [], tab = "menu";
-
-async function loadMenu(){
-  const r = await fetch("menu.json?v=" + Date.now(), { cache: "no-store" });
-  if (!r.ok) throw new Error("menu");
-  MENU = await r.json();
-  CUR = MENU.currency || CUR;
-  MENU.cats.forEach((c, ci) => { CATS[c.id] = { ...c, idx: ci }; c.items.forEach(it => { if (!ITEMS[it.id]) ITEMS[it.id] = { ...it, cat: c.id }; }); });
-}
-
-function myName(){ return store.get("go_name", ""); }
-function setMyName(n){ store.set("go_name", n); }
-function rememberOrder(id, role){ const l = store.get("go_orders", []).filter(x => x.id !== id); l.unshift({ id, role, at: Date.now() }); store.set("go_orders", l.slice(0, 60)); }
-
-function askName(){
-  return new Promise(res => {
-    $("nName").value = myName(); $("nErr").textContent = "";
-    const d = $("nameDlg");
-    const ok = () => { const v = $("nName").value.trim(); if (!v) { $("nErr").textContent = "اكتب اسمك"; return; } setMyName(v); d.close(); cleanup(); res(v); };
-    const cancel = () => { cleanup(); res(null); };
-    const key = e => { if (e.key === "Enter") ok(); };
-    const cleanup = () => { $("nOk").removeEventListener("click", ok); d.removeEventListener("close", cancel); $("nName").removeEventListener("keydown", key); };
-    $("nOk").addEventListener("click", ok); d.addEventListener("close", cancel); $("nName").addEventListener("keydown", key);
-    d.showModal(); setTimeout(() => $("nName").focus(), 50);
-  });
-}
-
-/* ---------------- routing ---------------- */
-function route(){
-  unsub.forEach(f => f && f()); unsub = [];
-  const m = location.hash.match(/^#\/o\/([a-z0-9]+)/i);
-  $("boot").hidden = true;
-  if (m) openOrder(m[1]); else showHome();
-}
-window.addEventListener("hashchange", route);
-
-/* ---------------- home ---------------- */
-async function showHome(){
-  $("order").hidden = true; $("home").hidden = false;
-  document.title = "طلب جماعي | بيت الشاورما";
-  $("hName").value = myName();
-  $("demoNote").hidden = B.shared;
-  const list = store.get("go_orders", []);
-  const ul = $("hOrders");
-  if (!list.length) { ul.innerHTML = '<li class="empty">لسه مفيش طلبات. افتح أول طلب من فوق.</li>'; return; }
-  ul.innerHTML = list.map(x => `<li><a href="#/o/${esc(x.id)}" data-oid="${esc(x.id)}"><span class="av" style="background:${x.role === "host" ? "var(--red)" : "var(--coal)"}">${x.role === "host" ? "★" : "↗"}</span><span class="ot"><b>…</b><span>${new Date(x.at).toLocaleDateString("ar-EG", { weekday: "long", day: "numeric", month: "long" })}${x.role === "host" ? " · إنت صاحب الطلب" : ""}</span></span><span class="amt"></span></a></li>`).join("");
-  for (const x of list.slice(0, 20)) {
-    try {
-      const [o, lines] = await Promise.all([B.getOrder(x.id), B.getLines(x.id)]);
-      const a = ul.querySelector(`[data-oid="${x.id}"]`); if (!a) continue;
-      if (!o) { a.querySelector(".ot b").textContent = "طلب مش موجود"; continue; }
-      a.querySelector(".ot b").textContent = o.title || "طلب بيت الشاورما";
-      const tot = lines.reduce((s, l) => s + l.unit * l.qty, 0);
-      const ppl = new Set(lines.map(l => l.uid)).size;
-      a.querySelector(".amt").textContent = money(tot);
-      a.querySelector(".ot span").textContent += ` · ${ppl} ${ppl === 1 ? "فرد" : "أفراد"}` + (o.status !== "open" ? " · مقفول" : "");
-    } catch {}
-  }
-}
-$("hCreate").addEventListener("click", async () => {
-  const name = $("hName").value.trim();
-  if (!name) { $("hErr").textContent = "اكتب اسمك الأول"; $("hName").focus(); return; }
-  setMyName(name); $("hErr").textContent = "";
-  const btn = $("hCreate"); btn.disabled = true; btn.textContent = "جاري الإنشاء…";
-  try {
-    const title = $("hTitle").value.trim() || "طلب " + new Date().toLocaleDateString("ar-EG", { weekday: "long", day: "numeric", month: "long" });
-    const id = await B.createOrder({ title, hostUid: B.uid, hostName: name, status: "open", checked: {}, paid: {} });
-    rememberOrder(id, "host");
-    location.hash = "#/o/" + id;
-    setTimeout(() => toast("الطلب اتفتح ✔ اضغط مشاركة وابعت اللينك للجروب"), 600);
-  } catch (e) { $("hErr").textContent = "حصلت مشكلة في الإنشاء. اتأكد من الإنترنت وجرب تاني."; console.error(e); }
-  btn.disabled = false; btn.textContent = "افتح طلب جديد";
-});
-
-/* ---------------- order ---------------- */
-let OID = null;
-const isHost = () => O && O.hostUid === B.uid;
-const isOpen = () => O && O.status === "open";
-
-function openOrder(id){
-  OID = id; O = null; LINES = [];
-  $("home").hidden = true; $("order").hidden = false;
-  $("menuList").innerHTML = '<div class="loading">جاري التحميل…</div>';
-  renderMenu();
-  unsub.push(B.watchOrder(id, o => {
-    if (!o) { $("menuList").innerHTML = '<div class="loading">الطلب ده مش موجود. اتأكد من اللينك.</div>'; $("oTitle").textContent = ""; return; }
-    const first = !O; O = o;
-    if (first) rememberOrder(id, o.hostUid === B.uid ? "host" : "guest");
-    renderHeader(); renderAll();
-  }, e => { console.error(e); toast("مشكلة في الاتصال"); }));
-  unsub.push(B.watchLines(id, ls => { LINES = ls; renderAll(); }, e => console.error(e)));
-}
-
-function renderHeader(){
-  $("oTitle").textContent = O.title || "";
-  document.title = (O.title || "طلب") + " | بيت الشاورما";
-  const st = $("oStatus");
-  st.textContent = O.status === "open" ? "مفتوح" : O.status === "done" ? "اتطلب ✔" : "مقفول";
-  st.className = "status" + (O.status === "open" ? "" : " locked");
-  $("locked1").hidden = isOpen();
-  document.querySelectorAll("#menuList .item").forEach(b => b.disabled = !isOpen());
-  setTopH();
-}
-function setTopH(){ const h = document.querySelector("#order .top").offsetHeight; document.documentElement.style.setProperty("--topH", h + "px"); }
-window.addEventListener("resize", setTopH);
-
-document.querySelectorAll(".tabs button").forEach(b => b.addEventListener("click", () => setTab(b.dataset.tab)));
-function setTab(t){
-  tab = t;
-  document.querySelectorAll(".tabs button").forEach(b => b.classList.toggle("on", b.dataset.tab === t));
-  ["menu", "all", "prep", "bill"].forEach(x => $("t-" + x).hidden = x !== t);
-  window.scrollTo({ top: 0 });
-  renderAll();
-}
-
-/* ---------------- menu ---------------- */
-function itemFrom(it){
-  // the lowest price a customer can pay when a size group replaces the base price
-  const sg = it.g.map(g => MENU.groups[g]).find(g => g && g.t === "s" && g.min >= 1);
-  if (!sg) return { p: it.p, from: false };
-  const ps = sg.m.map(m => MENU.mods[m] && MENU.mods[m][1]).filter(x => x != null);
-  return { p: Math.min(...ps), from: new Set(ps).size > 1 };
-}
-let menuRendered = false;
-function renderMenu(){
-  if (menuRendered) return; menuRendered = true;
-  $("chips").innerHTML = MENU.cats.map(c => `<button type="button" data-cat="${c.id}">${esc(c.n)}</button>`).join("");
-  $("menuList").innerHTML = MENU.cats.map(c => `<div class="cat" id="cat-${c.id}" data-cat="${c.id}"><h3>${esc(c.n)}</h3><div class="items">${c.items.map(it => {
-    const f = itemFrom(it);
-    return `<button class="item" type="button" data-item="${it.id}" data-cat="${c.id}" data-s="${esc((it.n + " " + c.n).toLowerCase())}">
-      <span class="thumb">${it.img ? `<img src="${esc(it.img)}" alt="" loading="lazy" decoding="async" onerror="this.remove()">` : ""}</span>
-      <span class="it"><b>${esc(it.n)}</b>${it.d ? `<small>${esc(it.d)}</small>` : ""}
-      <span class="pr"><span class="pfrom">${f.from ? '<span class="from">من </span>' : ""}<span class="price">${num(f.p)}<small>${esc(CUR)}</small></span></span><span class="plus" aria-hidden="true">+</span></span></span></button>`;
-  }).join("")}</div></div>`).join("");
-  spy();
-}
-$("chips").addEventListener("click", e => {
-  const b = e.target.closest("[data-cat]"); if (!b) return;
-  $("q").value = ""; filter("");
-  const el = $("cat-" + b.dataset.cat);
-  const y = el.getBoundingClientRect().top + window.scrollY - (document.querySelector(".menu-tools").offsetHeight + document.querySelector("#order .top").offsetHeight) + 4;
-  window.scrollTo({ top: y, behavior: "smooth" });
-});
-$("q").addEventListener("input", e => filter(e.target.value));
-function filter(q){
-  q = q.trim().toLowerCase().replace(/[أإآ]/g, "ا").replace(/ة/g, "ه").replace(/ى/g, "ي");
-  const norm = s => s.replace(/[أإآ]/g, "ا").replace(/ة/g, "ه").replace(/ى/g, "ي");
-  document.querySelectorAll("#menuList .cat").forEach(c => {
-    let any = false;
-    c.querySelectorAll(".item").forEach(i => { const hit = !q || norm(i.dataset.s).includes(q); i.hidden = !hit; any = any || hit; });
-    c.hidden = !any;
-  });
-}
-function spy(){
-  if (!("IntersectionObserver" in window)) return;
-  const io = new IntersectionObserver(es => es.forEach(en => {
-    if (!en.isIntersecting) return;
-    document.querySelectorAll("#chips button").forEach(b => {
-      const on = b.dataset.cat === en.target.dataset.cat; b.classList.toggle("on", on);
-      if (on) b.parentNode.scrollTo({ left: b.offsetLeft - b.parentNode.clientWidth / 2 + b.offsetWidth / 2, behavior: "smooth" });
-    });
-  }), { rootMargin: "-40% 0px -55% 0px" });
-  document.querySelectorAll("#menuList .cat").forEach(c => io.observe(c));
-}
-$("menuList").addEventListener("click", e => {
-  const b = e.target.closest("[data-item]"); if (!b) return;
-  if (!isOpen()) { toast("الطلب مقفول"); return; }
-  openItem(ITEMS[b.dataset.item], +b.dataset.cat);
-});
-
-/* ---------------- item sheet ---------------- */
-let cur = null; // { it, cat, sel: {gid: Set(mid)}, qty, editLine }
-// Some add-on groups in the restaurant's data say "required" but their own site doesn't enforce it
-// (e.g. grill add-ons with "بدون بصل"). A group of extras/exclusions is always optional here.
-const EXTRA_RX = /^(بدون|اجعل|غير|زياد|اكسترا|إضافة|اضافة)/;
-function effMin(g){
-  if (g.t === "o") return 0; // extras/options are never required, like the restaurant site
-  return Math.min(g.min || 0, g.m.length, g.max || 1);
-}
-function gName(g){ return /^[\x00-\x7F]+$/.test(g.n || "") ? (g.t === "s" ? "الحجم" : "الإضافات") : g.n; }
-function groupsOf(it){ return it.g.map(id => ({ id, ...MENU.groups[id] })).filter(g => g.m && g.m.length).map(g => ({ ...g, min: effMin(g) })); }
-function openItem(it, catId, line){
-  cur = { it, cat: catId || it.cat, sel: {}, qty: line ? line.qty : 1, line };
-  const gs = groupsOf(it);
-  gs.forEach(g => { cur.sel[g.id] = new Set(); });
-  if (line) line.opts.forEach(o => cur.sel[o.g] && cur.sel[o.g].add(o.m));
-  else gs.forEach(g => { if (g.t === "s" && g.min >= 1 && g.m.length === 1) cur.sel[g.id].add(g.m[0]); });
-  $("iImg").style.backgroundImage = it.img ? `url("${it.img.replace(/"/g, "%22")}")` : "";
-  $("iImg").hidden = !it.img;
-  $("iName").textContent = it.n;
-  $("iDesc").textContent = it.d || "";
-  $("iNote").value = line ? line.note || "" : "";
-  $("iErr").textContent = "";
-  renderGroups();
-  $("itemDlg").showModal();
-  $("itemDlg").querySelector(".sheet").scrollTop = 0;
-}
-function renderGroups(){
-  const gs = groupsOf(cur.it);
-  $("iGroups").innerHTML = gs.map(g => {
-    const single = g.max === 1;
-    const need = g.min >= 1;
-    const label = need ? (g.min === g.max ? "مطلوب" : `مطلوب ${g.min}`) : (single ? "اختياري" : `اختياري · لحد ${g.max}`);
-    return `<div class="grp" data-g="${g.id}"><div class="grp-h"><b>${esc(gName(g))}</b><span class="req${need ? "" : " opt"}" data-req="${g.id}">${label}</span></div>${g.m.map(m => {
-      const md = MENU.mods[m]; if (!md) return "";
-      const on = cur.sel[g.id].has(m);
-      const pr = g.t === "s" ? num(md[1]) + " " + CUR : (md[1] > 0 ? "+" + num(md[1]) + " " + CUR : "");
-      return `<button type="button" class="opt-row${on ? " on" : ""}" data-g="${g.id}" data-m="${m}"><span class="mk ${single ? "r" : "c"}">${!single && on ? "✓" : ""}</span><span class="on-t">${esc(md[0])}</span><span class="op">${pr}</span></button>`;
-    }).join("")}</div>`;
-  }).join("");
-  $("iQty").textContent = cur.qty;
-  $("iAdd").textContent = (cur.line ? "حفظ" : "ضيف") + "  ·  " + money(unitPrice() * cur.qty);
-}
-$("iGroups").addEventListener("click", e => {
-  const b = e.target.closest("[data-m]"); if (!b) return;
-  const g0 = MENU.groups[b.dataset.g], g = { ...g0, min: effMin(g0) }, s = cur.sel[b.dataset.g], m = +b.dataset.m;
-  if (g.max === 1) { if (s.has(m) && g.min < 1) s.clear(); else { s.clear(); s.add(m); } }
-  else if (s.has(m)) s.delete(m);
-  else { if (s.size >= g.max) { toast(`أقصى عدد ${g.max}`); return; } s.add(m); }
-  const keep = $("itemDlg").querySelector(".sheet").scrollTop;
-  renderGroups();
-  $("itemDlg").querySelector(".sheet").scrollTop = keep;
-});
-$("iPlus").addEventListener("click", () => { cur.qty = Math.min(50, cur.qty + 1); renderGroups(); });
-$("iMinus").addEventListener("click", () => { cur.qty = Math.max(1, cur.qty - 1); renderGroups(); });
-
-function unitPrice(){
-  let base = cur.it.p, add = 0;
-  for (const g of groupsOf(cur.it)) for (const m of cur.sel[g.id]) {
-    const p = MENU.mods[m][1];
-    if (g.t === "s") base = p; else add += p;
-  }
-  return base + add;
-}
-$("iAdd").addEventListener("click", async () => {
-  for (const g of groupsOf(cur.it)) if (cur.sel[g.id].size < g.min) {
-    $("iErr").textContent = "اختار " + gName(g);
-    const r = $("iGroups").querySelector(`[data-req="${g.id}"]`); r.classList.add("err"); r.scrollIntoView({ behavior: "smooth", block: "center" });
-    return;
-  }
-  let name = myName();
-  if (!name) { $("itemDlg").close(); name = await askName(); if (!name) return; $("itemDlg").showModal(); }
-  const opts = [];
-  for (const g of groupsOf(cur.it)) for (const m of g.m) if (cur.sel[g.id].has(m)) opts.push({ g: g.id, gn: gName(g), t: g.t, m, mn: MENU.mods[m][0], p: MENU.mods[m][1] });
-  const cat = CATS[cur.cat] || CATS[cur.it.cat];
-  const line = { uid: B.uid, who: name, item: cur.it.id, name: cur.it.n, cat: cat.id, catName: cat.n, opts, note: $("iNote").value.trim(), unit: unitPrice(), qty: cur.qty };
-  const btn = $("iAdd"); btn.disabled = true;
-  try {
-    if (cur.line) await B.updateLine(OID, cur.line.id, { opts, note: line.note, unit: line.unit, qty: line.qty, who: name });
-    else {
-      const same = LINES.find(l => l.uid === B.uid && l.item === line.item && sig(l) === sig(line));
-      if (same) await B.updateLine(OID, same.id, { qty: same.qty + line.qty });
-      else await B.addLine(OID, line);
-    }
-    $("itemDlg").close();
-    toast((cur.line ? "اتعدل: " : "اتضاف: ") + cur.it.n);
-  } catch (e) { console.error(e); $("iErr").textContent = isOpen() ? "مشكلة في الحفظ. جرب تاني." : "الطلب اتقفل."; }
-  btn.disabled = false;
-});
-const sig = l => l.opts.map(o => o.m).sort().join(",") + "|" + (l.note || "");
-
-/* ---------------- render: everyone ---------------- */
-function people(){
-  const map = new Map();
-  for (const l of LINES) {
-    if (!map.has(l.uid)) map.set(l.uid, { uid: l.uid, who: l.who, lines: [], total: 0, count: 0 });
-    const p = map.get(l.uid); p.who = l.who; p.lines.push(l); p.total += l.unit * l.qty; p.count += l.qty;
-  }
-  const arr = [...map.values()];
-  arr.sort((a, b) => (b.uid === B.uid) - (a.uid === B.uid) || (b.uid === O.hostUid) - (a.uid === O.hostUid));
-  return arr;
-}
-function renderAll(){
-  if (!O) return;
-  const ppl = people();
-  const total = ppl.reduce((s, p) => s + p.total, 0);
-  const count = ppl.reduce((s, p) => s + p.count, 0);
-  $("nAll").textContent = count;
-  const me = ppl.find(p => p.uid === B.uid);
-  $("mybar").hidden = !(me && tab === "menu");
-  if (me) { $("myCount").textContent = me.count; $("myTotal").textContent = money(me.total); }
-
-  if (tab === "all") {
-    $("people").innerHTML = ppl.length ? ppl.map(p => {
-      const mine = p.uid === B.uid, canEdit = (mine && isOpen()) || isHost();
-      return `<div class="person${mine ? " me" : ""}"><div class="ph"><span class="av" style="background:${colorOf(p.uid)}">${esc((p.who || "؟").trim().charAt(0))}</span><b>${esc(p.who)}${mine ? '<span class="tag me">إنت</span>' : ""}${p.uid === O.hostUid ? '<span class="tag host">صاحب الطلب</span>' : ""}${O.paid && O.paid[p.uid] ? '<span class="tag paid">دفع ✔</span>' : ""}</b><span class="sub">${money(p.total)}</span></div>
-      <ul class="lines">${p.lines.map(l => `<li><div class="ln"><b>${l.qty} × ${esc(l.name)}</b>${l.opts.length ? `<div class="opts">${esc(l.opts.map(o => o.mn).join(" · "))}</div>` : ""}${l.note ? `<div class="lnote">✎ ${esc(l.note)}</div>` : ""}
-        ${canEdit ? `<div class="q"><button type="button" data-q="${l.id}" data-d="1" aria-label="زود">+</button><b>${l.qty}</b><button type="button" data-q="${l.id}" data-d="-1" aria-label="قلل">−</button>${mine && isOpen() ? `<button type="button" class="del" data-edit="${l.id}">تعديل</button>` : ""}<button type="button" class="del" data-del="${l.id}">حذف</button></div>` : ""}</div><div class="lp">${money(l.unit * l.qty)}</div></li>`).join("")}</ul></div>`;
-    }).join("") : '<div class="empty">لسه محدش ضاف حاجة. ابعت اللينك للجروب.</div>';
-    const g = $("grand"); g.hidden = !ppl.length;
-    g.innerHTML = `<span>الإجمالي<small>${ppl.length} ${ppl.length === 1 ? "فرد" : "أفراد"} · ${count} صنف · من غير التوصيل</small></span><span>${money(total)}</span>`;
-  }
-  if (tab === "prep") renderPrep();
-  if (tab === "bill") renderBill(ppl, total);
-}
-$("people").addEventListener("click", async e => {
-  const q = e.target.closest("[data-q]"), d = e.target.closest("[data-del]"), ed = e.target.closest("[data-edit]");
-  try {
-    if (q) { const l = LINES.find(x => x.id === q.dataset.q); const n = l.qty + (+q.dataset.d); if (n <= 0) await B.deleteLine(OID, l.id); else await B.updateLine(OID, l.id, { qty: n }); }
-    if (d) { const l = LINES.find(x => x.id === d.dataset.del); if (confirm(`حذف ${l.name}${l.uid !== B.uid ? " بتاع " + l.who : ""}؟`)) await B.deleteLine(OID, l.id); }
-    if (ed) { const l = LINES.find(x => x.id === ed.dataset.edit); const it = ITEMS[l.item]; if (it) openItem(it, l.cat, l); else toast("الصنف ده مش موجود في المنيو دلوقتي"); }
-  } catch (err) { console.error(err); toast("مش هينفع، الطلب ممكن يكون اتقفل"); }
-});
-$("myBtn").addEventListener("click", () => setTab("all"));
-
-/* ---------------- render: prep checklist ---------------- */
-function prepGroups(){
-  // identical item + options + note collapse into one row, in the restaurant's menu order
-  const rows = new Map();
-  for (const l of LINES) {
-    const k = (l.item + "|" + sig(l)).replace(/[.~*/\[\]`]/g, "_");
-    if (!rows.has(k)) rows.set(k, { k, l, qty: 0, who: [] });
-    const r = rows.get(k); r.qty += l.qty; r.who.push({ n: l.who, q: l.qty });
-  }
-  const byCat = new Map();
-  for (const r of rows.values()) {
-    const c = r.l.cat;
-    if (!byCat.has(c)) byCat.set(c, { id: c, n: r.l.catName, idx: CATS[c] ? CATS[c].idx : 999, rows: [] });
-    byCat.get(c).rows.push(r);
-  }
-  const cats = [...byCat.values()].sort((a, b) => a.idx - b.idx);
-  cats.forEach(c => c.rows.sort((a, b) => {
-    const ia = CATS[c.id] ? CATS[c.id].items.findIndex(i => i.id === a.l.item) : 0, ib = CATS[c.id] ? CATS[c.id].items.findIndex(i => i.id === b.l.item) : 0;
-    return ia - ib || a.k.localeCompare(b.k);
-  }));
-  return cats;
-}
-const BOOKMARKLET = "javascript:(async()%3D%3E%7Btry%7Bvar%20N%3Dwindow.%24nuxt%2CS%3DN%26%26N.%24store%3Bif(!S%7C%7C!S.state%7C%7C!S.state.concept)%7Balert(%22%D8%A7%D9%81%D8%AA%D8%AD%20%D9%85%D9%88%D9%82%D8%B9%20%D8%A8%D9%8A%D8%AA%20%D8%A7%D9%84%D8%B4%D8%A7%D9%88%D8%B1%D9%85%D8%A7%20%D8%A7%D9%84%D8%A3%D9%88%D9%84%D8%8C%20%D9%88%D8%A8%D8%B9%D8%AF%D9%8A%D9%86%20%D8%AF%D9%88%D8%B3%20%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D8%B5%D8%A7%D8%B1%22)%3Breturn%7Dvar%20st%3DS.state%2Craw%3D(location.hash.match(%2Fgx%3D(%5B%5E%26%5D%2B)%2F)%7C%7C%5B%5D)%5B1%5D%2Cdata%3Dnull%3Btry%7Bdata%3DJSON.parse(decodeURIComponent(raw%7C%7C%22%22))%7Dcatch(e)%7B%7Dif(!data)%7Bvar%20t%3Dprompt(%22%D8%A7%D9%84%D8%B5%D9%82%20%D9%83%D9%88%D8%AF%20%D8%A7%D9%84%D8%B7%D9%84%D8%A8%20%D8%A7%D9%84%D8%AC%D9%85%D8%A7%D8%B9%D9%8A%20%D9%87%D9%86%D8%A7%3A%22)%3Bif(!t)return%3Btry%7Bdata%3DJSON.parse(t.trim())%7Dcatch(e)%7Balert(%22%D8%A7%D9%84%D9%83%D9%88%D8%AF%20%D8%AF%D9%87%20%D9%85%D8%B4%20%D8%B5%D8%AD%D9%8A%D8%AD%22)%3Breturn%7D%7Dif(!st.concept.categoryItems%7C%7C!st.concept.categoryItems.length)%7Balert(%22%D8%A7%D9%84%D9%85%D9%86%D9%8A%D9%88%20%D9%84%D8%B3%D9%87%20%D8%A8%D9%8A%D8%AD%D9%85%D9%91%D9%84%D8%8C%20%D8%A7%D8%B3%D8%AA%D9%86%D9%89%20%D8%AB%D8%A7%D9%86%D9%8A%D8%A9%20%D9%88%D8%AC%D8%B1%D8%A8%20%D8%AA%D8%A7%D9%86%D9%8A%22)%3Breturn%7Dvar%20G%3D%7B%7D%2CM%3D%7B%7D%2CI%3D%7B%7D%3Bst.concept.modifierGroups.forEach(function(g)%7BG%5Bg.id%5D%3Dg.attributes%7D)%3Bst.concept.modifiers.forEach(function(m)%7BM%5Bm.id%5D%3Dm.attributes%7D)%3Bst.concept.categoryItems.forEach(function(c)%7Bc.attributes.items.forEach(function(i)%7BI%5Bi.id%5D%3Di%7D)%7D)%3Bif(st.cart.items.length%26%26!confirm(%22%D8%A7%D9%84%D8%B3%D9%84%D8%A9%20%D9%81%D9%8A%D9%87%D8%A7%20%D8%A3%D8%B5%D9%86%D8%A7%D9%81%20%D8%AF%D9%84%D9%88%D9%82%D8%AA%D9%8A.%20%D8%A3%D9%85%D8%B3%D8%AD%D9%87%D8%A7%20%D9%88%D8%A3%D8%AD%D8%B7%20%D8%A7%D9%84%D8%B7%D9%84%D8%A8%20%D8%A7%D9%84%D8%AC%D9%85%D8%A7%D8%B9%D9%8A%D8%9F%22))return%3BS.commit(%22cart%2FEMPTY_CART%22)%3Bvar%20ok%3D0%2Cpcs%3D0%2Cskip%3D%5B%5D%3Bdata.forEach(function(r)%7B%20var%20id%3Dr%5B0%5D%2Cmods%3Dr%5B1%5D%7C%7C%5B%5D%2Cq%3Dr%5B2%5D%7C%7C1%2Cnote%3Dr%5B3%5D%7C%7Cnull%2Cname%3Dr%5B4%5D%7C%7CString(id)%2Cit%3DI%5Bid%5D%3B%20if(!it%7C%7C!it.enabled)%7Bskip.push(name)%3Breturn%7D%20var%20igs%3D(it%5B%22modifier-groups%22%5D%7C%7C%5B%5D).map(function(g)%7Bvar%20o%3Dtypeof%20g%3D%3D%22object%22%3Fg%3A%7Bid%3Ag%7D%2Cgg%3DG%5Bo.id%5D%7C%7C%7B%7D%2Cown%3Do.modifiers%26%26o.modifiers.length%3Breturn%7Bid%3Ao.id%2Cg%3Agg%2Cmin%3Ao.min!%3Dnull%3Fo.min%3Agg.minimum%2Cmax%3Ao.max!%3Dnull%3Fo.max%3Agg.maximum%2Cids%3A(own%3Fo.modifiers%3Agg.modifiers%7C%7C%5B%5D).map(function(x)%7Breturn%20typeof%20x%3D%3D%22object%22%3Fx.id%3Ax%7D)%7D%7D)%3B%20var%20base%3Dit.price%2Cadd%3D0%2Cout%3D%5B%5D%2Cbad%3Dfalse%2Cidx%3D0%3B%20mods.forEach(function(mid)%7B%20%20var%20m%3DM%5Bmid%5D%2Cig%3Digs.find(function(x)%7Breturn%20x.ids.indexOf(mid)%3E-1%7D)%3B%20%20if(!m%7C%7C!ig)%7Bbad%3Dtrue%3Breturn%7D%20%20var%20g%3Dig.g%2Cgid%3Dig.id%3Bidx%2B%2B%3B%20%20if(g.type%3D%3D%22sizes%22)%7Bbase%3Dm.price%3Bout.push(%7Bid%3Amid%2Cname%3Am.name%2Cprice%3Am.price%2Cnotes%3A%22%22%2Cquantity%3A1%2CisSize%3Atrue%2Cprices%3A%5B%5D%7D)%7D%20%20else%7Badd%2B%3Dm.price%3Bout.push(%7Bid%3Amid%2Cname%3Am.name%2Cprice%3Am.price%2Cnotes%3A%22%22%2Cquantity%3A1%2Cmodifiers%3A%5B%5D%2CisSize%3Afalse%2Cmaximum%3Aig.max%2Cminimum%3Aig.min%2Cmodifier_group_id%3Agid%2C%22free-modifiers-count%22%3A0%2Cprices%3A%5B%5D%2CoriginalPrice%3Am.price%2Cindex%3Aidx%7D)%7D%20%7D)%3B%20if(bad)%7Bskip.push(name)%3Breturn%7D%20S.commit(%22cart%2FADD_ITEM%22%2C%7Bid%3Ait.id%2Cprice%3Ait.price%2Cdescription%3Ait.description%2Cquantity%3Aq%2Cnotes%3Anote%2Cname%3Ait.name%2CimgUrl%3Ait%5B%22image-uri%22%5D%2Cdiscount%3A0%2C%22combo-items%22%3A%5B%5D%2C%22excluded-locations%22%3Ait%5B%22excluded-locations%22%5D%7C%7C%5B%5D%2C%22out-of-stock-locations%22%3Ait%5B%22out-of-stock-locations%22%5D%7C%7C%5B%5D%2Cmodifiers%3Aout%2Cingredients%3A%5B%5D%2Ctotal%3Abase%2Badd%2Cprices%3A%5B%5D%7D)%3B%20ok%2B%2B%3Bpcs%2B%3Dq%3B%7D)%3BlocalStorage.setItem(%22items%22%2CJSON.stringify(st.cart.items))%3Bhistory.replaceState(null%2C%22%22%2Clocation.pathname)%3Balert(%22%D8%A7%D8%AA%D8%B6%D8%A7%D9%81%20%22%2Bpcs%2B%22%20%D8%B5%D9%86%D9%81%20%D9%84%D9%84%D8%B3%D9%84%D8%A9%20%E2%9C%94%22%2B(skip.length%3F%22%5Cn%5Cn%D8%AF%D9%88%D9%84%20%D9%85%D8%B4%20%D9%84%D8%A7%D9%82%D9%8A%D9%87%D9%85%20%D8%A8%D9%86%D9%81%D8%B3%20%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D9%8A%D8%A7%D8%B1%D8%A7%D8%AA%D8%8C%20%D8%B6%D9%8A%D9%81%D9%87%D9%85%20%D8%A8%D8%A5%D9%8A%D8%AF%D9%83%3A%5Cn-%20%22%2Bskip.join(%22%5Cn-%20%22)%3A%22%22))%3Bvar%20cb%3D%5B%5D.slice.call(document.querySelectorAll(%22button%2Ca%22)).find(function(b)%7Breturn%20%2F%D8%B9%D8%B1%D8%B6%20%D8%A7%D9%84%D8%B7%D9%84%D8%A8%D8%A7%D8%AA%7CView%2Fi.test(b.innerText%7C%7C%22%22)%7D)%3Bif(cb)cb.click()%3B%7Dcatch(e)%7Balert(%22%D8%AD%D8%B5%D9%84%D8%AA%20%D9%85%D8%B4%D9%83%D9%84%D8%A9%3A%20%22%2Be.message)%7D%7D)()%3B";
-function cartCode(){ return JSON.stringify(prepGroups().flatMap(c => c.rows).map(r => [r.l.item, r.l.opts.map(o => o.m), r.qty, r.l.note || null, r.l.name])); }
-function renderPrep(){
-  const host = isHost();
-  $("prepGuest").hidden = host;
-  const src = (MENU.source || "https://order.shawarmahouse.com.sa/menu").replace(/\/$/, "");
-  $("hostBar").innerHTML = host ? (
-    O.status === "open"
-      ? `<button class="btn dark" type="button" data-host="lock">اقفل الطلب</button><a class="btn ghost" href="${esc(src)}" target="_blank" rel="noopener">افتح بيت الشاورما</a>`
-      : `<a class="btn primary" style="margin:0" href="${esc(src)}" target="_blank" rel="noopener">افتح بيت الشاورما</a><button class="btn ghost" type="button" data-host="open">افتح الطلب تاني</button>${O.status !== "done" ? `<button class="btn green" type="button" data-host="done">اتطلب ✔</button>` : ""}`
-  ) : "";
-  const cats = prepGroups();
-  const allRows = cats.flatMap(c => c.rows);
-  $("fillBox").hidden = !(host && allRows.length);
-  if (host && allRows.length) $("fillGo").href = src + "/-" + cats[0].id + "#gx=" + encodeURIComponent(cartCode());
-  const doneN = allRows.filter(r => O.checked && O.checked[r.k]).length;
-  const pieces = allRows.reduce((s, r) => s + r.qty, 0);
-  $("prepHead").innerHTML = allRows.length ? `<div style="margin-top:16px;display:flex;justify-content:space-between;font-weight:800"><span>${host ? "ضيف على موقعهم وعلّم ✔" : "قايمة الطلب المجمعة"}</span><span>${doneN}/${allRows.length}</span></div><div class="progress"><i style="width:${allRows.length ? doneN / allRows.length * 100 : 0}%"></i></div><div class="muted small">${pieces} صنف في ${allRows.length} سطر${O.status === "open" && host ? " · اقفل الطلب الأول عشان محدش يزود وإنت بتطلب" : ""}</div>` : "";
-  $("prepList").innerHTML = allRows.length ? cats.map(c => `<div class="prep-cat"><div class="pch"><b>${esc(c.n)}</b><a href="${esc(src)}/-${c.id}" target="_blank" rel="noopener">افتح القسم ↗</a></div>${c.rows.map(r => {
-    const done = O.checked && O.checked[r.k];
-    return `<button type="button" class="check${done ? " done" : ""}" data-chk="${esc(r.k)}" ${host ? "" : "disabled"}><span class="qty">${r.qty}×</span><span class="cn"><b>${esc(r.l.name)}</b>${r.l.opts.length ? `<div class="opts muted small">${esc(r.l.opts.map(o => o.mn).join(" · "))}</div>` : ""}${r.l.note ? `<div class="lnote small" style="color:#8A5A00">✎ ${esc(r.l.note)}</div>` : ""}<div class="who">${esc(r.who.length === 1 ? r.who[0].n : r.who.map(w => w.n + (w.q > 1 ? " ×" + w.q : "")).join("، "))}</div></span><span class="box">${done ? "✓" : ""}</span></button>`;
-  }).join("")}</div>`).join("") : '<div class="empty">لسه مفيش أصناف.</div>';
-}
+const dateLabel = t => t ? new Date(t).toLocaleDateString("ar-EG", { weekday: "long", day: "numeric", month: "long" }) + " · " + new Date(t).toLocaleTimeString("ar-EG", { hour: "numeric", minute: "2-digit" }) : "";
+const myName = () => store.get("go_name", "");
 async function copyText(t, ok){
   try { await navigator.clipboard.writeText(t); toast(ok); return; } catch {}
   const x = document.createElement("textarea"); x.value = t; x.setAttribute("readonly", ""); x.style.position = "fixed"; x.style.opacity = "0";
@@ -782,71 +364,274 @@ async function copyText(t, ok){
   let done = false; try { done = document.execCommand("copy"); } catch {}
   x.remove(); toast(done ? ok : "مقدرتش أنسخ، جرب تاني");
 }
-$("fillCopy").addEventListener("click", () => copyText(cartCode(), "اتنسخ كود الطلب ✔ الصقه لما الاختصار يطلبه"));
-$("fillHow").addEventListener("click", () => { $("fillSetup").hidden = !$("fillSetup").hidden; });
-$("bmCopy").addEventListener("click", () => copyText(BOOKMARKLET, "اتنسخ الاختصار ✔"));
-$("hostBar").addEventListener("click", async e => {
-  const b = e.target.closest("[data-host]"); if (!b) return;
-  const a = b.dataset.host;
-  if (a === "lock" && !confirm("تقفل الطلب؟ محدش هيقدر يزود أو يعدّل بعد كده.")) return;
-  try { await B.updateOrder(OID, { status: a === "lock" ? "locked" : a === "open" ? "open" : "done" }); toast(a === "lock" ? "الطلب اتقفل" : a === "open" ? "الطلب اتفتح" : "تمام ✔"); }
-  catch (err) { console.error(err); toast("مشكلة، جرب تاني"); }
-});
-$("prepList").addEventListener("click", async e => {
-  const b = e.target.closest("[data-chk]"); if (!b || !isHost()) return;
-  const k = b.dataset.chk, on = !(O.checked && O.checked[k]);
-  b.classList.toggle("done", on); b.querySelector(".box").textContent = on ? "✓" : "";
-  try { await B.setField(OID, "checked." + k, on ? true : null); } catch (err) { console.error(err); }
+
+/* item = {i:itemId, n:name, c:catId, cn:catName, ci:catIdx, ii:itemIdx, q:qty, u:unitPrice, nt:note, o:[{m,n,p,s,q}]} */
+function parseCart(raw){
+  const arr = JSON.parse(decodeURIComponent(raw));
+  if (!Array.isArray(arr)) throw new Error("bad");
+  return arr.map(r => ({
+    i: +r[0], n: String(r[1] || ""), c: r[2] || 0, cn: String(r[3] || ""), ci: +r[4] || 0, ii: +r[5] || 0,
+    q: Math.max(1, Math.min(99, +r[6] || 1)), u: +r[7] || 0, nt: r[8] ? String(r[8]).slice(0, 200) : "",
+    o: (r[9] || []).map(m => ({ m: +m[0], n: String(m[1] || ""), p: +m[2] || 0, s: m[3] ? 1 : 0, q: +m[4] || 1 }))
+  })).filter(x => x.i);
+}
+const optText = it => it.o.slice().sort((a, b) => b.s - a.s).map(o => o.n + (o.q > 1 ? " ×" + o.q : "")).join(" · ");
+const itemsTotal = items => items.reduce((s, x) => s + x.u * x.q, 0);
+const sig = it => it.i + "|" + it.o.map(o => o.m + "x" + o.q).sort().join(",") + "|" + (it.nt || "");
+
+/* ================= state ================= */
+let B, CURID = null, VIEW = null, O = null, PEOPLE = [], tab = "all", unsub = [], curUnsub = null, PENDING = null;
+const isCurrent = () => VIEW === CURID;
+const isOpen = () => O && O.status === "open";
+
+function stopView(){ unsub.forEach(f => f && f()); unsub = []; }
+function route(){
+  const h = location.hash;
+  const add = h.match(/[#&]add=([^&]+)/);
+  if (add) {
+    try { PENDING = parseCart(add[1]); } catch { PENDING = null; toast("الطلب اللي جه من الاختصار مش مفهوم، جرب تاني"); }
+    history.replaceState(null, "", location.pathname + location.search);
+    if (PENDING && PENDING.length) { showOrder(CURID); openReview(); return; }
+  }
+  if (/^#\/h/.test(h)) return showHistory();
+  const m = h.match(/^#\/o\/([a-z0-9]+)/i);
+  showOrder(m ? m[1] : CURID);
+}
+window.addEventListener("hashchange", route);
+
+/* ================= order view ================= */
+function showOrder(id){
+  $("boot").hidden = true; $("hist").hidden = true; $("main").hidden = false; $("top").hidden = false; $("tabs").hidden = false;
+  if (VIEW === id && unsub.length) { render(); return; }
+  stopView(); VIEW = id; O = null; PEOPLE = [];
+  if (!id) { O = { status: "open", empty: true }; render(); return; }
+  unsub.push(B.watchOrder(id, o => { O = o || { status: "open", empty: true }; render(); }, e => { console.error(e); toast("مشكلة في الاتصال"); }));
+  unsub.push(B.watchPeople(id, p => { PEOPLE = p; render(); }, e => console.error(e)));
+}
+function sortedPeople(){
+  return PEOPLE.slice().sort((a, b) => (b.uid === B.uid) - (a.uid === B.uid) || (a.at || 0) - (b.at || 0));
+}
+function render(){
+  if (!O) return;
+  const ppl = sortedPeople();
+  const total = ppl.reduce((s, p) => s + itemsTotal(p.items || []), 0);
+  const count = ppl.reduce((s, p) => s + (p.items || []).reduce((a, x) => a + x.q, 0), 0);
+  $("nAll").textContent = count;
+  $("oTitle").textContent = O.createdAt ? dateLabel(ts(O.createdAt)) : "";
+  $("oStatus").textContent = O.status === "open" ? "مفتوح" : "مقفول";
+  $("oStatus").className = "status" + (O.status === "open" ? "" : " locked");
+  $("demoNote").hidden = B.shared;
+  const old = VIEW && !isCurrent();
+  $("oldNote").hidden = !old;
+  if (old) $("oldNote").innerHTML = `ده طلب قديم. <a href="#/" style="color:inherit;font-weight:800">ارجع للطلب الحالي ←</a>`;
+  $("howto").hidden = old;
+  $("toPrep").hidden = old;
+  $("lockNote").hidden = old || isOpen();
+  if (!old && !isOpen()) $("lockNote").innerHTML = `الطلب ده اتقفل${O.lockedBy ? "، <b>" + esc(O.lockedBy) + "</b> بيطلبه دلوقتي" : ""}. محدش يقدر يعدّل فيه.<br>لو لسه عايز تطلب، ابعت سلتك بالاختصار عادي وهيتعمل <b>طلب جديد منفصل</b>.`;
+
+  if (tab === "all") {
+    $("people").innerHTML = ppl.length ? ppl.map(p => {
+      const mine = p.uid === B.uid, edit = mine && isOpen() && isCurrent(), items = p.items || [];
+      return `<div class="person${mine ? " me" : ""}"><div class="ph"><span class="av" style="background:${colorOf(p.uid)}">${esc((p.who || "؟").trim().charAt(0))}</span><b>${esc(p.who)}${mine ? '<span class="tag me">إنت</span>' : ""}${O.paid && O.paid[p.uid] ? '<span class="tag paid">دفع ✔</span>' : ""}</b><span class="sub">${money(itemsTotal(items))}</span></div>
+      <ul class="lines">${items.map((x, k) => `<li><div class="ln"><b>${x.q} × ${esc(x.n)}</b>${x.o.length ? `<div class="opts">${esc(optText(x))}</div>` : ""}${x.nt ? `<div class="lnote">✎ ${esc(x.nt)}</div>` : ""}
+        ${edit ? `<div class="q"><button type="button" data-q="${k}" data-d="1" aria-label="زود">+</button><b>${x.q}</b><button type="button" data-q="${k}" data-d="-1" aria-label="قلل">−</button><button type="button" class="del" data-del="${k}">حذف</button></div>` : ""}</div><div class="lp">${money(x.u * x.q)}</div></li>`).join("")}</ul>
+      ${edit ? `<div class="pfoot"><button type="button" class="del" data-delall>امسح طلبي كله</button></div>` : ""}</div>`;
+    }).join("") : `<div class="empty">${isCurrent() || !VIEW ? "لسه محدش بعت طلبه." : "الطلب ده فاضي."}</div>`;
+    const g = $("grand"); g.hidden = !ppl.length;
+    g.innerHTML = `<span>الإجمالي<small>${ppl.length} ${ppl.length === 1 ? "فرد" : "أفراد"} · ${count} صنف · من غير التوصيل</small></span><span>${money(total)}</span>`;
+  }
+  if (tab === "prep") renderPrep();
+  if (tab === "bill") renderBill(ppl, total);
+  if ($("addDlg").open && PENDING) renderReview();
+}
+
+document.querySelectorAll("#tabs button").forEach(b => b.addEventListener("click", () => setTab(b.dataset.tab)));
+function setTab(t){
+  tab = t;
+  document.querySelectorAll("#tabs button").forEach(b => b.classList.toggle("on", b.dataset.tab === t));
+  ["all", "prep", "bill"].forEach(x => $("t-" + x).hidden = x !== t);
+  window.scrollTo({ top: 0 });
+  render();
+}
+$("toPrep").addEventListener("click", e => { e.preventDefault(); setTab("prep"); });
+$("setupBtn").addEventListener("click", () => { $("setup").hidden = !$("setup").hidden; $("setup").dataset.touched = "1"; });
+$("bmCode").textContent = BOOKMARKLET.slice(0, 160) + "…";
+$("bmCopy").addEventListener("click", () => copyText(BOOKMARKLET, "اتنسخ كود الاختصار ✔"));
+
+/* edit my items */
+$("people").addEventListener("click", async e => {
+  const q = e.target.closest("[data-q]"), d = e.target.closest("[data-del]"), all = e.target.closest("[data-delall]");
+  if (!q && !d && !all) return;
+  const me = PEOPLE.find(p => p.uid === B.uid); if (!me) return;
+  let items = (me.items || []).map(x => ({ ...x }));
+  if (q) { const k = +q.dataset.q; items[k].q += +q.dataset.d; if (items[k].q <= 0) items.splice(k, 1); }
+  if (d) { const k = +d.dataset.del; if (!confirm(`حذف ${items[k].n}؟`)) return; items.splice(k, 1); }
+  if (all) { if (!confirm("تمسح طلبك كله؟")) return; items = []; }
+  try { await B.setMine(VIEW, items.length ? { who: me.who, items } : null); }
+  catch (err) { console.error(err); toast("مش هينفع، الطلب اتقفل"); }
 });
 
-/* ---------------- render: bill ---------------- */
+/* ================= review (from bookmarklet) ================= */
+function openReview(){
+  $("aName").value = myName(); $("aErr").textContent = "";
+  renderReview();
+  $("addDlg").showModal();
+}
+function renderReview(){
+  const it = PENDING;
+  const replace = isCurrent() && isOpen() && PEOPLE.some(p => p.uid === B.uid);
+  const locked = !!CURID && O && !O.empty && isCurrent() && !isOpen();
+  $("aNote").innerHTML = locked
+    ? `<div class="note-bar">الطلب الحالي اتقفل. طلبك هيتحط في <b>طلب جديد منفصل</b>.</div>`
+    : replace ? `<div class="note-bar">إنت بعتّ طلب قبل كده. <b>القديم هيتمسح</b> والطلب ده هيتحط مكانه.</div>` : "";
+  $("aLines").innerHTML = it.map((x, k) => `<li><div class="ln"><b>${x.q} × ${esc(x.n)}</b>${x.o.length ? `<div class="opts">${esc(optText(x))}</div>` : ""}${x.nt ? `<div class="lnote">✎ ${esc(x.nt)}</div>` : ""}
+    <div class="q"><button type="button" data-aq="${k}" data-d="1" aria-label="زود">+</button><b>${x.q}</b><button type="button" data-aq="${k}" data-d="-1" aria-label="قلل">−</button><button type="button" class="del" data-adel="${k}">حذف</button></div></div><div class="lp">${money(x.u * x.q)}</div></li>`).join("") || '<li class="empty" style="display:block">مفيش أصناف.</li>';
+  $("aTotal").innerHTML = `<span>طلبك<small>${it.reduce((s, x) => s + x.q, 0)} صنف · من غير التوصيل</small></span><span>${money(itemsTotal(it))}</span>`;
+  $("aSave").disabled = !it.length;
+}
+$("aLines").addEventListener("click", e => {
+  const q = e.target.closest("[data-aq]"), d = e.target.closest("[data-adel]");
+  if (q) { const k = +q.dataset.aq; PENDING[k].q = Math.max(1, Math.min(99, PENDING[k].q + +q.dataset.d)); }
+  if (d) PENDING.splice(+d.dataset.adel, 1);
+  if (q || d) renderReview();
+});
+$("aCancel").addEventListener("click", () => { $("addDlg").close(); PENDING = null; });
+$("aSave").addEventListener("click", async () => {
+  const who = $("aName").value.trim();
+  if (!who) { $("aErr").textContent = "اكتب اسمك"; $("aName").focus(); return; }
+  store.set("go_name", who);
+  const btn = $("aSave"); btn.disabled = true; btn.textContent = "جاري الحفظ…";
+  try {
+    const r = await B.submit({ who, items: PENDING });
+    PENDING = null; $("addDlg").close();
+    if (VIEW !== r.id) { CURID = r.id; showOrder(r.id); }
+    setTab("all");
+    toast(r.fresh ? "اتعمل طلب جديد وطلبك أول واحد فيه ✔" : "طلبك اتحفظ ✔", 2600);
+  } catch (e) { console.error(e); $("aErr").textContent = "حصلت مشكلة في الحفظ. اتأكد من النت وجرب تاني."; }
+  btn.disabled = false; btn.textContent = "حفظ طلبي";
+});
+
+/* ================= prep ================= */
+function prepGroups(){
+  const rows = new Map();
+  for (const p of PEOPLE) for (const x of (p.items || [])) {
+    const k = sig(x).replace(/[.~*/\[\]`#$]/g, "_");
+    if (!rows.has(k)) rows.set(k, { k, x, qty: 0, who: [] });
+    const r = rows.get(k); r.qty += x.q; r.who.push({ n: p.who, q: x.q });
+  }
+  const byCat = new Map();
+  for (const r of rows.values()) {
+    const c = r.x.c;
+    if (!byCat.has(c)) byCat.set(c, { id: c, n: r.x.cn, idx: r.x.ci, rows: [] });
+    byCat.get(c).rows.push(r);
+  }
+  const cats = [...byCat.values()].sort((a, b) => a.idx - b.idx);
+  cats.forEach(c => c.rows.sort((a, b) => a.x.ii - b.x.ii || a.k.localeCompare(b.k)));
+  return cats;
+}
+function cartCode(){
+  return JSON.stringify(prepGroups().flatMap(c => c.rows).map(r => [r.x.i, r.x.o.flatMap(o => Array(Math.max(1, o.q)).fill(o.m)), r.qty, r.x.nt || null, r.x.n]));
+}
+function renderPrep(){
+  const cats = prepGroups();
+  const rows = cats.flatMap(c => c.rows);
+  const cur = isCurrent();
+  let h = "";
+  if (!cur) h = `<p class="muted small" style="margin:0">ده طلب قديم. تقدر تملا بيه السلة تاني لو عايز تكرره.</p>`;
+  else if (isOpen()) h = `<h2>للي هيطلب من بيت الشاورما</h2>
+    <p class="small" style="margin:0">لما الكل يبعت طلبه، اقفل الطلب عشان محدش يزود وإنت بتطلب. بعد القفل محدش يقدر يعدّل، واللي يبعت بعد كده هيتعمله طلب جديد منفصل.</p>
+    <button class="btn dark w" type="button" id="lockBtn" ${rows.length ? "" : "disabled"}>أنا هطلب دلوقتي، اقفل الطلب</button>`;
+  else h = `<h2>املأ سلة بيت الشاورما</h2>
+    <ol class="steps small"><li>دوس الزرار ده، هيفتح موقعهم.</li><li>من المفضلة دوس اختصار <b>«طلب جماعي»</b>.</li><li>هتلاقي الطلب كله في السلة، راجعه وكمّل الدفع.</li></ol>`;
+  if (rows.length && (!cur || !isOpen())) h += `<a class="btn primary" target="_blank" rel="noopener" href="${esc(SHOP + "/-" + cats[0].id + "#gx=" + encodeURIComponent(cartCode()))}">افتح بيت الشاورما بالطلب</a>
+    <button class="btn ghost w" type="button" id="codeBtn">نسخ كود الطلب (لو السلة متملتش)</button>`;
+  if (cur && !isOpen()) h += `<div class="sep"></div><p class="small" style="margin:6px 0 0"><b>خلصت الطلب؟</b> الزرار ده للي طلب من بيت الشاورما بعد ما يخلّص. بيحفظ الطلب ده في السجل ويفتح طلب جديد فاضي للمرة الجاية.</p>
+    <button class="btn green w" type="button" id="newBtn">خلصنا، ابدأ طلب جديد</button>`;
+  $("orderer").innerHTML = h;
+  const done = rows.filter(r => O.checked && O.checked[r.k]).length;
+  const pcs = rows.reduce((s, r) => s + r.qty, 0);
+  $("prepHead").innerHTML = rows.length ? `<div style="margin-top:16px;display:flex;justify-content:space-between;font-weight:800"><span>القايمة المجمعة</span><span>${done}/${rows.length}</span></div><div class="progress"><i style="width:${done / rows.length * 100}%"></i></div><div class="muted small">${pcs} صنف في ${rows.length} سطر · علّم ✔ على اللي اتضاف</div>` : "";
+  $("prepList").innerHTML = rows.length ? cats.map(c => `<div class="prep-cat"><div class="pch"><b>${esc(c.n)}</b><a href="${esc(SHOP)}/-${esc(c.id)}" target="_blank" rel="noopener">افتح القسم ↗</a></div>${c.rows.map(r => {
+    const ok = O.checked && O.checked[r.k];
+    return `<button type="button" class="check${ok ? " done" : ""}" data-chk="${esc(r.k)}"><span class="qty">${r.qty}×</span><span class="cn"><b>${esc(r.x.n)}</b>${r.x.o.length ? `<div class="opts">${esc(optText(r.x))}</div>` : ""}${r.x.nt ? `<div class="lnote">✎ ${esc(r.x.nt)}</div>` : ""}<div class="who">${esc(r.who.map(w => w.n + (w.q > 1 ? " ×" + w.q : "")).join("، "))}</div></span><span class="box">${ok ? "✓" : ""}</span></button>`;
+  }).join("")}</div>`).join("") : '<div class="empty">لسه مفيش أصناف.</div>';
+}
+$("orderer").addEventListener("click", async e => {
+  const id = e.target.closest("button") && e.target.closest("button").id;
+  try {
+    if (id === "lockBtn") {
+      if (!confirm("تقفل الطلب؟ محدش هيقدر يزود أو يعدّل بعد كده، واللي يبعت بعد القفل هيتعمله طلب جديد.")) return;
+      await B.lock(VIEW, myName()); toast("الطلب اتقفل ✔");
+    }
+    if (id === "codeBtn") copyText(cartCode(), "اتنسخ كود الطلب ✔ الصقه لما الاختصار يطلبه");
+    if (id === "newBtn") {
+      if (!confirm("خلصتوا الطلب؟ الطلب ده هيتحفظ في السجل ويبدأ طلب جديد فاضي.")) return;
+      CURID = await B.newOrder(); toast("بدأنا طلب جديد ✔"); location.hash = "#/"; showOrder(CURID); setTab("all");
+    }
+  } catch (err) { console.error(err); toast("مشكلة، جرب تاني"); }
+});
+$("prepList").addEventListener("click", async e => {
+  const b = e.target.closest("[data-chk]"); if (!b || !VIEW) return;
+  const k = b.dataset.chk, on = !(O.checked && O.checked[k]);
+  b.classList.toggle("done", on); b.querySelector(".box").textContent = on ? "✓" : "";
+  try { await B.setField(VIEW, "checked." + k, on ? true : null); } catch (err) { console.error(err); }
+});
+
+/* ================= bill ================= */
 function renderBill(ppl, total){
-  const host = isHost();
   $("billList").innerHTML = ppl.length ? ppl.map(p => {
-    const paid = !!(O.paid && O.paid[p.uid]);
-    return `<li><span class="av" style="background:${colorOf(p.uid)}">${esc((p.who || "؟").trim().charAt(0))}</span><span class="bn">${esc(p.who)}${p.uid === B.uid ? '<span class="tag me">إنت</span>' : ""}<span class="bc">${p.count} صنف</span></span><span class="ba">${money(p.total)}</span>${p.uid === O.hostUid ? "" : (host ? `<button type="button" class="paybtn${paid ? " on" : ""}" data-pay="${esc(p.uid)}">${paid ? "دفع ✔" : "لسه"}</button>` : `<span class="tag ${paid ? "paid" : ""}">${paid ? "دفع ✔" : "لسه"}</span>`)}</li>`;
+    const paid = !!(O.paid && O.paid[p.uid]), n = (p.items || []).reduce((s, x) => s + x.q, 0);
+    return `<li><span class="av" style="background:${colorOf(p.uid)}">${esc((p.who || "؟").trim().charAt(0))}</span><span class="bn">${esc(p.who)}${p.uid === B.uid ? '<span class="tag me">إنت</span>' : ""}<span class="bc">${n} صنف</span></span><span class="ba">${money(itemsTotal(p.items || []))}</span><button type="button" class="paybtn${paid ? " on" : ""}" data-pay="${esc(p.uid)}">${paid ? "دفع ✔" : "لسه"}</button></li>`;
   }).join("") : '<li class="empty" style="display:block">لسه مفيش حساب.</li>';
-  const unpaid = ppl.filter(p => p.uid !== O.hostUid && !(O.paid && O.paid[p.uid])).reduce((s, p) => s + p.total, 0);
+  const unpaid = ppl.filter(p => !(O.paid && O.paid[p.uid])).reduce((s, p) => s + itemsTotal(p.items || []), 0);
   $("billTotal").innerHTML = `<span>الإجمالي<small>${unpaid > 0 ? "لسه متحصّلش: " + money(unpaid) : "كله اتحصّل ✔"}</small></span><span>${money(total)}</span>`;
 }
 $("billList").addEventListener("click", async e => {
-  const b = e.target.closest("[data-pay]"); if (!b || !isHost()) return;
+  const b = e.target.closest("[data-pay]"); if (!b || !VIEW) return;
   const on = !(O.paid && O.paid[b.dataset.pay]);
-  try { await B.setField(OID, "paid." + b.dataset.pay, on ? true : null); } catch (err) { console.error(err); toast("مشكلة، جرب تاني"); }
+  try { await B.setField(VIEW, "paid." + b.dataset.pay, on ? true : null); } catch (err) { console.error(err); toast("مشكلة، جرب تاني"); }
 });
 $("billWa").addEventListener("click", () => {
-  const ppl = people(); const total = ppl.reduce((s, p) => s + p.total, 0);
-  const txt = `🌯 ${O.title}\nحساب بيت الشاورما (من غير التوصيل)\n\n` + ppl.map(p => `• ${p.who}: ${money(p.total)}${O.paid && O.paid[p.uid] ? " ✔" : ""}`).join("\n") + `\n\nالإجمالي: ${money(total)}\n${link()}`;
+  const ppl = sortedPeople(); const total = ppl.reduce((s, p) => s + itemsTotal(p.items || []), 0);
+  const txt = `🌯 حساب بيت الشاورما (من غير التوصيل)\n${O.createdAt ? dateLabel(ts(O.createdAt)) : ""}\n\n` + ppl.map(p => `• ${p.who}: ${money(itemsTotal(p.items || []))}${O.paid && O.paid[p.uid] ? " ✔" : ""}`).join("\n") + `\n\nالإجمالي: ${money(total)}`;
   window.open("https://wa.me/?text=" + encodeURIComponent(txt), "_blank", "noopener");
 });
 
-/* ---------------- share ---------------- */
-const link = () => location.origin + location.pathname + "#/o/" + OID;
-async function shareLink(){
-  const text = `🌯 ${O ? O.title : "طلب بيت الشاورما"}\nضيف طلبك من هنا:`;
-  if (navigator.share && /Android|iPhone|iPad|Mobile/i.test(navigator.userAgent)) { try { await navigator.share({ title: "طلب جماعي", text, url: link() }); return; } catch (e) { if (e && e.name === "AbortError") return; } }
-  copy();
+/* ================= history ================= */
+async function showHistory(){
+  $("boot").hidden = true; $("main").hidden = true; $("hist").hidden = false; $("top").hidden = false; $("tabs").hidden = true;
+  $("oTitle").textContent = ""; $("oStatus").textContent = ""; $("oStatus").className = "";
+  const ul = $("hList"); ul.innerHTML = '<li class="empty">جاري التحميل…</li>';
+  let list = [];
+  try { list = await B.history(); } catch (e) { console.error(e); ul.innerHTML = '<li class="empty">مقدرتش أجيب السجل.</li>'; return; }
+  if (!list.length) { ul.innerHTML = '<li class="empty">لسه مفيش طلبات.</li>'; return; }
+  ul.innerHTML = list.map(o => `<li><a href="${o.id === CURID ? "#/" : "#/o/" + esc(o.id)}" data-oid="${esc(o.id)}"><span class="av" style="background:${o.id === CURID ? "var(--red)" : "var(--coal)"}">${o.id === CURID ? "★" : "↺"}</span><span class="ot"><b>${esc(dateLabel(ts(o.createdAt)) || "طلب")}</b><span>${o.id === CURID ? "الطلب الحالي · " : ""}${o.status === "open" ? "مفتوح" : "مقفول"}${o.lockedBy ? " · طلبه " + esc(o.lockedBy) : ""}</span></span><span class="amt"></span></a></li>`).join("");
+  for (const o of list) {
+    try {
+      const p = await B.people(o.id);
+      const a = ul.querySelector(`[data-oid="${o.id}"]`); if (!a) continue;
+      a.querySelector(".amt").textContent = money(p.reduce((s, x) => s + itemsTotal(x.items || []), 0));
+      a.querySelector(".ot span").textContent += ` · ${p.length} ${p.length === 1 ? "فرد" : "أفراد"}`;
+    } catch {}
+  }
 }
-async function copy(){
-  try { await navigator.clipboard.writeText(link()); toast("اتنسخ اللينك ✔"); return; } catch {}
-  const t = document.createElement("textarea"); t.value = link(); t.setAttribute("readonly", ""); t.style.position = "fixed"; t.style.opacity = "0";
-  document.body.appendChild(t); t.select();
-  let ok = false; try { ok = document.execCommand("copy"); } catch {}
-  t.remove(); toast(ok ? "اتنسخ اللينك ✔" : link());
-}
-$("oShare").addEventListener("click", shareLink);
-$("copyLink").addEventListener("click", copy);
-$("shareWa").addEventListener("click", () => window.open("https://wa.me/?text=" + encodeURIComponent(`🌯 ${O.title}\nضيف طلبك من هنا: ${link()}`), "_blank", "noopener"));
 
-/* ---------------- boot ---------------- */
+/* ================= boot ================= */
 (async () => {
   try {
-    const [b] = await Promise.all([CFG ? firebaseBackend() : localBackend(), loadMenu()]);
-    B = b;
-    route();
+    B = CFG ? await firebaseBackend() : localBackend();
+    let first = true;
+    curUnsub = B.watchCurrent(id => {
+      const prev = CURID; CURID = id;
+      if (first) { first = false; route(); return; }
+      // someone started a new order: follow it if we were looking at the current one
+      if (id !== prev && VIEW === prev && !$("addDlg").open && !/^#\/(o|h)/.test(location.hash)) {
+        if (O && O.status === "open" && !PEOPLE.length) showOrder(id); else render();
+      }
+    }, e => { console.error(e); $("boot").textContent = "مش قادر أتصل. حدّث الصفحة."; });
   } catch (e) {
     console.error(e);
-    $("boot").textContent = CFG ? "مش قادر أتصل. اتأكد من الإنترنت ومن إعدادات Firebase، وحدّث الصفحة." : "مش قادر أحمّل المنيو. حدّث الصفحة.";
+    $("boot").textContent = "مش قادر أتصل. اتأكد من الإنترنت وحدّث الصفحة.";
   }
 })();
 </script>
