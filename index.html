@@ -610,6 +610,7 @@ async function showHistory(){
     try {
       const p = await B.people(o.id);
       const a = ul.querySelector(`[data-oid="${o.id}"]`); if (!a) continue;
+      if (!p.length && o.id !== CURID) { a.parentNode.remove(); continue; }
       a.querySelector(".amt").textContent = money(p.reduce((s, x) => s + itemsTotal(x.items || []), 0));
       a.querySelector(".ot span").textContent += ` · ${p.length} ${p.length === 1 ? "فرد" : "أفراد"}`;
     } catch {}
